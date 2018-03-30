@@ -1,0 +1,57 @@
+/* main-container
+orm-container
+form-title
+form
+email-input
+password-input
+login-button
+form-footer-text */
+
+
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  height: auto;
+  padding: 100px 20px;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.form>* {
+  margin : 10px;
+}
+
+.form input {
+  border: 0px;
+  background: #DDD;
+  padding: 10px 20px;
+  color : #111;
+}
+
+.form input:focus {
+  border: 2px solid #111;
+}
+
+.form .login-button {
+  border: 0px;
+  padding: 10px 20px;
+  background: #111;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.form input:invalid{
+  border: 1px solid #D21;
+}
+
+p {
+  font-size: 0.8em;
+}

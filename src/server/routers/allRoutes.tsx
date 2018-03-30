@@ -13,7 +13,7 @@ syncLoadAssets();
 
 const app = express.Router();
 
-app.get("/", (req: express.Request, res: express.Response) => {
+app.get("*", (req: express.Request, res: express.Response) => {
   // res.json({
   //   success: true,
   //   data: "Working"
@@ -24,10 +24,11 @@ app.get("/", (req: express.Request, res: express.Response) => {
   };
   const context = {};
   const markup = renderToString(
-    <StaticRouter context={context} location={req.url} >
+    <StaticRouter context={context} location={req.originalUrl} >
       <App />
     </StaticRouter>
   );
+  console.log("Rendering", markup);
   res.send(
     `<!doctype html>
     <html lang="">
@@ -36,6 +37,18 @@ app.get("/", (req: express.Request, res: express.Response) => {
           <meta charSet='utf-8' />
           <title>Razzle TypeScript</title>
           <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+  crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" 
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
+integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+ crossorigin="anonymous">
             ${
     assets.client.css
       ? `<link rel="stylesheet" href="${assets.client.css}">`

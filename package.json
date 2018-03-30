@@ -26,9 +26,11 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.0",
     "react": "^16.0.0",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.0.0",
     "react-router-dom": "^4.2.2",
-    "serve-favicon": "^2.4.5"
+    "serve-favicon": "^2.4.5",
+    "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
     "@types/compression": "^0.0.36",

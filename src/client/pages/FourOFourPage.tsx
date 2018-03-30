@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default class HomePage extends React.PureComponent {
+export default class FourOFourPage extends React.PureComponent {
 
   public render() {
     return (
