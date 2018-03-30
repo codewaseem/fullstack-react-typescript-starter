@@ -6,10 +6,6 @@ import * as serveFavicon from "serve-favicon";
 import * as passport from "passport";
 import * as bodyParser from "body-parser";
 import * as compression from "compression";
-import * as dotenv from "dotenv";
-
-const DOT_ENV_PATH = "../../.env";
-dotenv.config({ path: DOT_ENV_PATH });
 import routesSetup from "./routesSetup";
 
 const app = express();

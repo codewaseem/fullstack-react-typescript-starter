@@ -7,10 +7,15 @@
     "downlevelIteration": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": ["es6", "es2015", "es2017", "dom"],
+    "lib": [
+      "es6",
+      "es2015",
+      "es2017",
+      "dom"
+    ],
     "module": "esnext",
     "moduleResolution": "node",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": false,
@@ -30,5 +35,9 @@
     "jest",
     "razzle.config.js"
   ],
-  "types": ["typePatches", "node", "webpack-env"]
+  "types": [
+    "typePatches",
+    "node",
+    "webpack-env"
+  ]
 }
