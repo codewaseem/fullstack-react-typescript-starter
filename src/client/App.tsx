@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Switch, Route, Link } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import { PrivateRoute } from "./components";
+import AdminPage from "./pages/AdminPage";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 // import FourOFour from "./pages/"
@@ -11,10 +12,9 @@ export default class App extends React.Component {
   public render() {
     return (
       <div>
-        <Link to={"/home"}>Home</Link>
         <Switch>
           <Route exact={true} path="/" component={LandingPage} />
-          <Route path="/home" component={HomePage} />
+          <PrivateRoute path="/admin-panel" allow={true} component={AdminPage} />
           <Route path="/login" component={LoginPage} />
         </Switch>
       </div>
