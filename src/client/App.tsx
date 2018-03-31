@@ -4,6 +4,8 @@ import HomePage from "./pages/HomePage";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 // import FourOFour from "./pages/"
+import "semantic-ui-css/semantic.min.css";
+
 export default class App extends React.Component {
 
   public render() {
