@@ -7,3 +7,10 @@ export const Products = Loadable({
     return <div>Loading...</div>;
   }
 });
+
+export const LoginPage = Loadable({
+  loader: () => import("./LoginPage"),
+  loading() {
+    return <div>Loading...</div>;
+  }
+});

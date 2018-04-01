@@ -3,6 +3,8 @@ import * as React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import App from "../../client/App";
+import { Provider } from "react-redux";
+import getStore from "../../client/state";
 
 let assets: any;
 
@@ -18,17 +20,15 @@ app.get("*", (req: express.Request, res: express.Response) => {
   //   success: true,
   //   data: "Working"
   // });
-
-  const testData = {
-    dataFromServer: "data"
-  };
+  const store = getStore();
   const context = {};
   const markup = renderToString(
-    <StaticRouter context={context} location={req.originalUrl} >
-      <App />
-    </StaticRouter>
+    <Provider store={store}>
+      <StaticRouter context={context} location={req.originalUrl} >
+        <App />
+      </StaticRouter>
+    </Provider>
   );
-  console.log("Rendering", markup);
   res.send(
     `<!doctype html>
     <html lang="">
@@ -42,7 +42,7 @@ app.get("*", (req: express.Request, res: express.Response) => {
       ? `<link rel="stylesheet" href="${assets.client.css}">`
       : ""
     }
-    <script>window.__INITIAL_DATA__ = ${JSON.stringify(testData)}</script>
+    <script>window.__INITIAL_DATA__ = ${JSON.stringify(store.getState())}</script>
             ${
     process.env.NODE_ENV === "production"
       ? `<script src="${assets.client.js}" defer></script>`

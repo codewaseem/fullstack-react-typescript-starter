@@ -1,10 +1,20 @@
 import * as React from "react";
 import { Button, Form, Grid, Header, Image, Message, Segment } from "semantic-ui-react";
+import { Redirect } from "react-router-dom";
 
-import "whatwg-fetch";
 export default class LoginPage extends React.Component {
 
+  handleSubmit = (e) => {
+    const { onFormSubmit } = this.props as any;
+    onFormSubmit("admin@drivensociety.com", "admin@drivensociety");
+  }
+
   render() {
+    console.log("Render");
+    const { isLoggedIn } = (this.props as any).auth;
+    if (isLoggedIn) {
+      return <Redirect to={"/admin-panel"} />;
+    }
     return (
       <div className="login-form">
         <Grid
@@ -16,7 +26,7 @@ export default class LoginPage extends React.Component {
             <Header as="h2" color="teal" textAlign="center">
               {" "}Member's Login
           </Header>
-            <Form size="large">
+            <Form size="large" onSubmit={this.handleSubmit}>
               <Segment stacked={true}>
                 <Form.Input
                   fluid={true}

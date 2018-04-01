@@ -3,13 +3,12 @@ import { Switch, Route, Link } from "react-router-dom";
 import { PrivateRoute } from "./components";
 import AdminPage from "./pages/AdminPage";
 import LandingPage from "./pages/LandingPage";
-import LoginPage from "./pages/LoginPage";
+import { LoginPage } from "./containers";
 // import FourOFour from "./pages/"
 import "semantic-ui-css/semantic.min.css";
 
 export default class App extends React.Component {
-
-  public render() {
+  render() {
     return (
       <div>
         <Switch>
