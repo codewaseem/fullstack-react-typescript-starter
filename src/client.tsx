@@ -4,10 +4,15 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import App from "./client/App";
 import getStore from "./client/state";
+import { getAuthData } from "./client/utils";
+import "semantic-ui-css/semantic.min.css";
 
 let data;
 if ((window as any).__INITIAL_DATA__) {
   data = (window as any).__INITIAL_DATA__;
+  if (localStorage && getAuthData()) {
+    data.auth = { isLoggedIn: true, user: getAuthData().user };
+  }
 }
 
 const store = getStore(data);

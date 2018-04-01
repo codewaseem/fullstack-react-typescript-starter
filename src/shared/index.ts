@@ -1,3 +1,4 @@
+import { getAuthData } from "../client/utils";
 import axios from "axios";
 
 export function loginUser(username: string, password: string) {

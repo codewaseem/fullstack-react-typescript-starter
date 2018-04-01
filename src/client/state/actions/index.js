@@ -1,6 +1,6 @@
 import { loginUser as loginUserRequest } from "../../../shared";
+import { saveAuthData, clearAuthData } from "../../utils";
 
-const setJWTToken = () => { };
 
 export const LOGGING_IN = "LOGIN_USER";
 export const loggingIn = () => {
@@ -27,6 +27,13 @@ export const loginUserFailure = (error) => {
   }
 }
 
+export const LOGOUT_USER = "LOGOUT_USER";
+export function logoutUserSuccess() {
+  return {
+    type: LOGOUT_USER
+  }
+}
+
 export function loginUser(username, password) {
   return function (dispatch) {
     dispatch(loggingIn());
@@ -35,8 +42,16 @@ export function loginUser(username, password) {
         console.log(data);
         console.log("dispatching");
         dispatch(loginUserSuccess(data.user));
-        setJWTToken(data.token);
+        saveAuthData(data);
       })
       .catch(() => loginUserFailure("Authentication Failed"));
+  }
+}
+
+export function logoutUser() {
+  return function (dispatch) {
+    clearAuthData();
+    dispatch(logoutUserSuccess());
+    return Promise.resolve(true);
   }
 }

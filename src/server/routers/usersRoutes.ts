@@ -9,6 +9,7 @@ const app = express.Router();
 app.post("/login", passport.authenticate("local"), (req: any, res: express.Response) => {
   const token = getToken({ _id: req.user._id });
   const user = _.pick(req.user, ["firstName", "middleName", "lastName", "username", "_id"]);
+  res.setHeader("Authorization", "Bearer " + token);
   sendJSONResponse(res, 200, true, {
     user,
     token

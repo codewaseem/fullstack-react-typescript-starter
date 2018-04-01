@@ -59,3 +59,30 @@ export async function removeModelByIdAndRespond(Model: mongoose.Model<any>, id: 
     sendJSONResponse(res, 400, false, "Could not delete the given instance");
   }
 }
+
+export async function getAllModels(Model: mongoose.Model<any>, res: express.Response) {
+  try {
+    const items = await Model.find().exec();
+    if (items && items.length >= 0) {
+      sendJSONResponse(res, 200, true, items);
+    } else {
+      throw new Error("Not Found");
+    }
+  } catch (e) {
+    sendJSONResponse(res, 400, false, "Something went wrong while getting items");
+  }
+}
+
+export async function getModelById(Model: mongoose.Model<any>, id: string, res: express.Response) {
+  try {
+    const item = await Model.findById(id).exec();
+    if (item) {
+      sendJSONResponse(res, 200, true, item);
+    } else {
+      throw new Error("Not Found");
+    }
+  } catch (e) {
+    sendJSONResponse(res, 400, false, "Something went wrong while getting item");
+  }
+  sendJSONResponse(res, 400, false, "Something went wrong while getting items");
+}

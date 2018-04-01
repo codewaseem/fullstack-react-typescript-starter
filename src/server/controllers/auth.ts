@@ -39,9 +39,11 @@ export const verifyAdmin = (req, res, next) => {
       status: false,
       error: "No user"
     });
-  } else if (req.user && req.user.roleLevel === process.env.RAZZLE_ADMIN_ROLE) {
+    // tslint:disable-next-line:triple-equals
+  } else if (req.user && req.user.roleLevel == process.env.RAZZLE_ADMIN_ROLE) {
     next();
   } else {
+    console.log(req.user);
     res.status(401).json({
       status: false,
       error: "Not an admin"
