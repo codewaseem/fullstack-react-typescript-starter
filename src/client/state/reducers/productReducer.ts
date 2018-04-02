@@ -3,13 +3,18 @@ import {
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_FAILURE,
   ADDING_PRODUCT,
-  ADD_PRODUCT_SUCCESS
+  ADD_PRODUCT_SUCCESS,
+  UPDATING_PRODUCT,
+  UPDATE_PRODUCT_SUCCESS,
+  UPDATE_PRODUCT_FAILURE
 } from "../actions";
+
 export default function productReducer(
   state: any = {
     isLoading: false,
     isError: false,
-    products: null
+    productList: null,
+    productMap: null
   },
   action: any) {
 
@@ -35,6 +40,10 @@ export default function productReducer(
       isLoading: false,
       isError: true
     };
+    case ADDING_PRODUCT: return {
+      ...state,
+      isLoading: true
+    };
     case ADD_PRODUCT_SUCCESS: return {
       ...state,
       isLoading: false,
@@ -42,6 +51,11 @@ export default function productReducer(
       productList: [...state.productList, action.product],
       productMap: { ...state.productMap, [action.product._id]: action.product }
     };
+    case UPDATING_PRODUCT: return console.log("Called") || {
+      ...state,
+      isLoading: true
+    };
+    case UPDATE_PRODUCT_SUCCESS: return state;
     default: return state;
   }
 }

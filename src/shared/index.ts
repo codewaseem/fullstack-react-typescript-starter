@@ -45,3 +45,11 @@ export function addProduct(productDetails: any) {
     productDetails
   }).then(parseData).then(verifyData);
 }
+
+export function updateProduct(productID: any, productDetails: any) {
+  setAuthHeaders();
+  return axios.post("/products/update", {
+    productID,
+    productDetails
+  }).then(parseData).then(verifyData);
+}

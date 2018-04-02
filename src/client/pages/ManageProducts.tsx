@@ -38,8 +38,9 @@ export default class ManageProductsPage extends React.Component<any, any> {
   }
 
   onProductUpdateSubmit = (productDetails) => {
-    console.log(productDetails);
-    window.history.back();
+    console.log("here");
+    this.props.updateProduct(productDetails._id, productDetails).then(window.history.back());
+    // window.history.back();
   }
 
   render() {
@@ -199,7 +200,11 @@ class ProductForm extends React.Component<any, any> {
       });
     } else {
       this.setEmptyFormState();
-      (this.props as any).onSubmit({ name, image_url, rsvp_link, description });
+      const product = { name, image_url, rsvp_link, description };
+      if (this.props.product) {
+        (product as any)._id = this.props.product._id;
+      }
+      (this.props as any).onSubmit(product);
     }
   }
 
