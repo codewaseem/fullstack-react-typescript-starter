@@ -70,12 +70,11 @@ export function addingProduct() {
 //   }
 // }
 
-export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
+export const UPDATING_PRODUCT = "UPDATING_PRODUCT";
 
 export function updateProductAction(productID, product) {
   return {
-    type: UPDATE_PRODUCT,
-    product
+    type: UPDATING_PRODUCT
   }
 }
 

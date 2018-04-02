@@ -1,4 +1,10 @@
-import { GET_PRODUCTS, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_FAILURE, ADDING_PRODUCT, } from "../actions";
+import {
+  GET_PRODUCTS,
+  GET_PRODUCTS_SUCCESS,
+  GET_PRODUCTS_FAILURE,
+  ADDING_PRODUCT,
+  ADD_PRODUCT_SUCCESS
+} from "../actions";
 export default function productReducer(
   state: any = {
     isLoading: false,
@@ -28,6 +34,13 @@ export default function productReducer(
       ...state,
       isLoading: false,
       isError: true
+    };
+    case ADD_PRODUCT_SUCCESS: return {
+      ...state,
+      isLoading: false,
+      isError: true,
+      productList: [...state.productList, action.product],
+      productMap: { ...state.productMap, [action.product._id]: action.product }
     };
     default: return state;
   }

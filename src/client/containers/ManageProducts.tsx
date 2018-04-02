@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { getAllProducts } from "../state/actions";
+import { getAllProducts, addProduct } from "../state/actions";
 import { ManageProducts } from "../pages";
 
 const mapStateToProps = (state) => {
@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getProducts: () => {
       dispatch(getAllProducts());
+    },
+    addProduct: (productDetails: any) => {
+      dispatch(addProduct(productDetails));
     }
   };
 };

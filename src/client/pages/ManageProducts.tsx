@@ -33,10 +33,13 @@ export default class ManageProductsPage extends React.Component<any, any> {
 
   onProductAddSubmit = (productDetails) => {
     //
+    console.log(productDetails);
+    this.props.addProduct(productDetails);
   }
 
   onProductUpdateSubmit = (productDetails) => {
-    //
+    console.log(productDetails);
+    window.history.back();
   }
 
   render() {
@@ -138,6 +141,7 @@ class ProductForm extends React.Component<any, any> {
       image_url: product.image_url,
       rsvp_link: product.rsvp_link,
       description: product.description,
+      isUntouched: true,
       nameError: false,
       imageUrlError: false,
       rsvpError: false,
@@ -147,11 +151,25 @@ class ProductForm extends React.Component<any, any> {
 
   handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     this.setState(() => {
       return {
+        isUntouched: false,
         [name]: value
       };
+    });
+  }
+
+  setEmptyFormState = () => {
+    this.setState({
+      name: "",
+      image_url: "",
+      rsvp_link: "",
+      description: "",
+      isUntouched: true,
+      nameError: false,
+      imageUrlError: false,
+      rsvpError: false,
+      descriptionError: false
     });
   }
 
@@ -171,7 +189,7 @@ class ProductForm extends React.Component<any, any> {
       isError = true;
       newState.rsvpError = true;
     }
-    if (description) {
+    if (!description) {
       isError = true;
       newState.descriptionError = true;
     }
@@ -180,6 +198,7 @@ class ProductForm extends React.Component<any, any> {
         return newState;
       });
     } else {
+      this.setEmptyFormState();
       (this.props as any).onSubmit({ name, image_url, rsvp_link, description });
     }
   }
@@ -198,7 +217,7 @@ class ProductForm extends React.Component<any, any> {
             name={"name"}
             value={name}
             placeholder="Product Name"
-            error={nameError}
+            error={!this.state.isUntouched && nameError}
           />
           <Form.Field
             name={"image_url"}
@@ -207,7 +226,7 @@ class ProductForm extends React.Component<any, any> {
             value={image_url}
             onChange={this.handleInputChange}
             placeholder="https://image.com/my.jpg"
-            error={imageUrlError}
+            error={!this.state.isUntouched && imageUrlError}
           />
         </Form.Group>
         <Form.Field
@@ -217,7 +236,7 @@ class ProductForm extends React.Component<any, any> {
           label="RSVP Link"
           value={rsvp_link}
           placeholder="RSVP Link"
-          error={rsvpError}
+          error={!this.state.isUntouched && rsvpError}
         />
         <Form.Field
           onChange={this.handleInputChange}
@@ -227,7 +246,7 @@ class ProductForm extends React.Component<any, any> {
           label="Description"
           placeholder="Description"
           name={"description"}
-          error={descriptionError}
+          error={!this.state.isUntouched && descriptionError}
         />
         <Form.Field onClick={this.handleSubmit} control={Button} content={"Submit"} />
       </Form>
