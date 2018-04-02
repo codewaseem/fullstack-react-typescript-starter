@@ -14,3 +14,10 @@ export const LoginPage = Loadable({
     return <div>Loading...</div>;
   }
 });
+
+export const ManageProducts = Loadable({
+  loader: () => import("./ManageProducts"),
+  loading() {
+    return <div>Loading...</div>;
+  }
+});

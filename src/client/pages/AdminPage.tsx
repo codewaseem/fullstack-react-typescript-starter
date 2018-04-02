@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Container, Card } from "semantic-ui-react";
 import { Link, Route, Switch } from "react-router-dom";
-import { Products } from "./";
+import { ManageProducts } from "../containers";
 export default class HomePage extends React.PureComponent {
 
   public render() {
@@ -12,7 +12,7 @@ export default class HomePage extends React.PureComponent {
         <Switch>
           <Route
             path="/admin-panel/manage-products"
-            component={Products}
+            component={ManageProducts}
           />
           <Route
             // tslint:disable-next-line:jsx-no-multiline-js
