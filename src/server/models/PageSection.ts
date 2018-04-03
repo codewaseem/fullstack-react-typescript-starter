@@ -126,7 +126,7 @@ export const EventSection = PageSection.discriminator("EventSection", new mongoo
 
 export const GuestSection = PageSection.discriminator("GuestSection", new mongoose.Schema({
   guests: [{
-    picUrl: {
+    imageLink: {
       type: String,
       required: true
     },
@@ -178,6 +178,10 @@ export const SponsorSection = PageSection.discriminator("SponsorSection", new mo
     imageLink: {
       type: String,
       required: true
+    },
+    isShown: {
+      type: Boolean,
+      default: true
     }
   }],
   becomeSponsorMailTo: {

@@ -86,3 +86,44 @@ export async function getModelById(Model: mongoose.Model<any>, id: string, res: 
   }
   sendJSONResponse(res, 400, false, "Something went wrong while getting items");
 }
+
+export async function setDetailsFor(Model: mongoose.Model<any>, details: any, res: express.Response) {
+  const oldDetails = (await Model.find());
+  if (oldDetails.length > 0) {
+    const singleDocument = oldDetails[0];
+    const newDetails = details;
+    Object.keys(newDetails).forEach((key) => {
+      singleDocument[key] = newDetails[key];
+    });
+    singleDocument.save()
+      .then((updatedDetails) => {
+        res.json({
+          status: true,
+          data: updatedDetails
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+        res.status(401).json({
+          status: false,
+          error: "Failed to update website details"
+        });
+      });
+  } else {
+    const newWebsiteDetails = new Model(details);
+    newWebsiteDetails.save()
+      .then((savedDetails) => {
+        res.json({
+          status: true,
+          data: savedDetails.toObject()
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+        res.status(401).json({
+          status: false,
+          error: "Failed to save website details. Check logs for more info"
+        });
+      });
+  }
+}
