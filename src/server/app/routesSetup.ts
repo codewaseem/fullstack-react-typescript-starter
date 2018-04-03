@@ -1,7 +1,8 @@
 import { Express } from "express";
 import {
   allRoutesRouter, usersRouter, productsRouter, contactRouter,
-  sponsorsRouter, testimonialRouter, guestRouter
+  sponsorsRouter, testimonialRouter, guestRouter, eventsRouter,
+  aboutRouter
 } from "../routers";
 
 export default function setup(app: Express) {
@@ -11,5 +12,7 @@ export default function setup(app: Express) {
   app.use("/sponsorsSection/", sponsorsRouter);
   app.use("/testimonialsSection/", testimonialRouter);
   app.use("/guestSection/", guestRouter);
+  app.use("/eventSection/", eventsRouter);
+  app.use("/aboutSection/", aboutRouter);
   app.use("*", allRoutesRouter);
 }

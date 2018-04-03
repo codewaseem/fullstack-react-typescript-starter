@@ -5,3 +5,5 @@ export { default as contactRouter } from "./contactRouter";
 export { default as sponsorsRouter } from "./sponsorsRouter";
 export { default as testimonialRouter } from "./testimonialRouter";
 export { default as guestRouter } from "./guestRouter";
+export { default as eventsRouter } from "./eventsRouter";
+export { default as aboutRouter } from "./aboutRouter";
