@@ -7,3 +7,4 @@ export { default as testimonialRouter } from "./testimonialRouter";
 export { default as guestRouter } from "./guestRouter";
 export { default as eventsRouter } from "./eventsRouter";
 export { default as aboutRouter } from "./aboutRouter";
+export { default as pageSectionRouter } from "./pageSectionRouter";
