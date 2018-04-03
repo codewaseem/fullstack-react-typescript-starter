@@ -14,6 +14,6 @@ export default function setup(app: Express) {
   app.use("/guestSection/", guestRouter);
   app.use("/eventSection/", eventsRouter);
   app.use("/aboutSection/", aboutRouter);
-  app.use("/pageSections", pageSectionRouter);
+  app.use("/pageSections/", pageSectionRouter);
   app.use("*", allRoutesRouter);
 }
