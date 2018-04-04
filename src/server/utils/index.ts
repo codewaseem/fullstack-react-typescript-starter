@@ -97,33 +97,21 @@ export async function setDetailsFor(Model: mongoose.Model<any>, details: any, re
     });
     singleDocument.save()
       .then((updatedDetails) => {
-        res.json({
-          status: true,
-          data: updatedDetails
-        });
+        sendJSONResponse(res, 200, true, updatedDetails);
       })
       .catch((e) => {
         console.log(e);
-        res.status(401).json({
-          status: false,
-          error: "Failed to update website details"
-        });
+        sendJSONResponse(res, 400, false, e);
       });
   } else {
     const newWebsiteDetails = new Model(details);
     newWebsiteDetails.save()
       .then((savedDetails) => {
-        res.json({
-          status: true,
-          data: savedDetails.toObject()
-        });
+        sendJSONResponse(res, 200, true, savedDetails);
       })
       .catch((e) => {
         console.log(e);
-        res.status(401).json({
-          status: false,
-          error: "Failed to save website details. Check logs for more info"
-        });
+        sendJSONResponse(res, 400, false, e);
       });
   }
 }
