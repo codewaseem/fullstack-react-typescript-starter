@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import ProductForm from "../forms/EventsForm";
+import ProductForm from "../forms/AboutUsForm";
 
 export default class LandingPage extends React.PureComponent {
 
