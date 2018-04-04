@@ -3,14 +3,12 @@ import { getPageSections as getPageSectionsRequest, updateAboutSection, updateCo
 const defaultState = { isLoading: false, isError: false, pageSections: undefined };
 
 export const { getPageSections, getPageSectionsSuccess,
-  getPageSectionsFailure, pageSectionSuccess } = createActions({
+  getPageSectionsFailure, pageSectionUpdateSuccess } = createActions({
     GET_PAGE_SECTIONS: undefined,
     GET_PAGE_SECTIONS_SUCCESS: (pageSections) => ({ pageSections }),
     GET_PAGE_SECTIONS_FAILURE: undefined,
-    PAGE_SECTION_SUCCESS: (pageSection) => ({ pageSection })
+    PAGE_SECTION_UPDATE_SUCCESS: (pageSection) => ({ pageSection })
   });
-
-console.log(getPageSections, getPageSectionsSuccess, pageSectionSuccess);
 
 export const reducer = handleActions(
   {
@@ -38,8 +36,7 @@ export const reducer = handleActions(
       };
     }
     ,
-    [pageSectionSuccess](state: any, { payload: { pageSection } }: any) {
-      console.log("DONE");
+    [pageSectionUpdateSuccess](state: any, { payload: { pageSection } }: any) {
       return {
         ...state,
         pageSections: {
@@ -65,8 +62,7 @@ export const updateAboutSectionRequest = (details) => {
   return async (dispatch) => {
     dispatch(getPageSections());
     return updateAboutSection(details).then((updatedSection) => {
-      console.log("CALIIN");
-      return dispatch(pageSectionSuccess(updatedSection));
+      return dispatch(pageSectionUpdateSuccess(updatedSection));
     }).catch(getPageSectionsFailure);
   };
 };
@@ -75,7 +71,7 @@ export const updateContactSectionRequest = (details) => {
   return async (dispatch) => {
     dispatch(getPageSections());
     return updateContactSection(details).then((updatedSection) => {
-      return dispatch(pageSectionSuccess(updatedSection));
+      return dispatch(pageSectionUpdateSuccess(updatedSection));
     }).catch(getPageSectionsFailure);
   };
 };
