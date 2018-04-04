@@ -6,7 +6,11 @@ import App from "./client/App";
 import getStore from "./client/state";
 import { getAuthData } from "./client/utils";
 // tslint:disable-next-line:max-line-length
-import { getPageSections, getPageSectionsSuccess, getPageSectionsFailure, fetchPageSection, updateAboutSectionRequest } from "./client/state/actions/pageSectionActions";
+import {
+  getPageSections, getPageSectionsSuccess,
+  getPageSectionsFailure, fetchPageSection,
+  updateAboutSectionRequest, updateEventSectionRequest
+} from "./client/state/actions/pageSectionActions";
 import "semantic-ui-css/semantic.min.css";
 
 let data;
