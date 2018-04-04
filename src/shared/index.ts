@@ -1,5 +1,5 @@
 import { getAuthData } from "../client/utils";
-import axios from "axios";
+import { clientAxios as axios } from "./axios";
 
 function setAuthHeaders() {
   if (window && localStorage) {
@@ -39,17 +39,54 @@ export function getProducts() {
     .then(verifyData);
 }
 
-export function addProduct(productDetails: any) {
+export function addProduct(details: any) {
   setAuthHeaders();
   return axios.post("/products/add", {
-    productDetails
+    details
   }).then(parseData).then(verifyData);
 }
 
-export function updateProduct(productID: any, productDetails: any) {
+export function updateProduct(id: any, details: any) {
   setAuthHeaders();
   return axios.post("/products/update", {
-    productID,
-    productDetails
+    id,
+    details
+  }).then(parseData).then(verifyData);
+}
+
+export function getPageSections() {
+  setAuthHeaders();
+  return axios.get("/pageSections/")
+    .then(parseData).then(verifyData);
+}
+
+export function updateAboutSection(details: any) {
+  return postRequestForPageSection("/aboutSection", details);
+}
+
+export function updateContactSection(details: any) {
+  return postRequestForPageSection("/contactSection", details);
+}
+
+export function updateSponsorSection(details: any) {
+  return postRequestForPageSection("/sponsorsSection", details);
+}
+
+export function updateTestimonialSection(details: any) {
+  return postRequestForPageSection("/testimonialsSection/", details);
+}
+
+export function updateGuestSection(details: any) {
+  return postRequestForPageSection("/guestSection/", details);
+}
+
+export function updateEventSection(details: any) {
+  return postRequestForPageSection("/eventSection/", details);
+}
+
+function postRequestForPageSection(sectionPath: string, details: any) {
+  setAuthHeaders();
+  return axios.post(sectionPath, {
+    details
   }).then(parseData).then(verifyData);
 }

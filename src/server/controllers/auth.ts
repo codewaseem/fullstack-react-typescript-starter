@@ -6,7 +6,7 @@ import { User } from "../models";
 
 console.log("Env", process.env);
 
-export function getToken(user: any, expiresIn: number = 3600) {
+export function getToken(user: any, expiresIn: number = 360000000) {
   return jwt.sign(user, process.env.RAZZLE_SECRET_KEY as any, { expiresIn });
 }
 
