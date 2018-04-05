@@ -27,7 +27,7 @@ app.post("/update/", (req: express.Request, res: express.Response) => {
 });
 
 app.post("/delete/", (req: express.Request, res: express.Response) => {
-  removeModelByIdAndRespond(Product, req.body.details, res);
+  removeModelByIdAndRespond(Product, req.body.id, res);
 });
 
 export default app;

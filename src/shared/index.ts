@@ -54,12 +54,25 @@ export function updateProduct(id: any, details: any) {
   }).then(parseData).then(verifyData);
 }
 
-export function getPageSections() {
+export function deleteProduct(id: string) {
+  setAuthHeaders();
+  return axios.post("/products/delete/", {
+    id
+  }).then(parseData).then(verifyData);
+}
+
+export function getPageSetting() {
   setAuthHeaders();
   return axios.get("/pageSettings/")
     .then(parseData).then(verifyData);
 }
 
+export function updatePageSetting(details: any) {
+  setAuthHeaders();
+  return axios.post("/pageSettings/", {
+    details
+  }).then(parseData).then(verifyData);
+}
 export function updateAboutSection(details: any) {
   return postRequestForPageSection("/aboutSection/", details);
 }

@@ -1,5 +1,6 @@
 import { createActions, handleActions } from "redux-actions";
 import { loginUser } from "../shared";
+import { saveAuthData } from "../client/utils";
 export const {
   loginPending,
   loginSuccess,
@@ -18,6 +19,7 @@ export const loginUserThunk = (username, password) => {
     return loginUser(username, password)
       .then((user) => {
         dispatch(loginSuccess(user));
+        saveAuthData(user);
       })
       .catch(() => {
         dispatch(loginFailed());
