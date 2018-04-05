@@ -1,6 +1,6 @@
 import { createActions, handleActions } from "redux-actions";
 import { getProducts, addProduct, updateProduct, deleteProduct } from "../shared";
-
+import * as _ from "lodash";
 export const {
   getProductsPending,
   getProductsSuccess,
@@ -121,8 +121,16 @@ export const productReducer = handleActions(
       };
     },
     [updateProductSuccess](state: any, { payload: { updatedProduct } }: any) {
+      // tslint:disable-next-line:triple-equals
       return {
         ...state,
+        productsList: _.map(state.productsList, (obj) => {
+          // tslint:disable-next-line:triple-equals
+          if (obj._id == updatedProduct._id) {
+            return updatedProduct;
+          }
+          return obj;
+        }),
         productsMap: {
           ...state.productsMap,
           [updatedProduct._id]: updatedProduct
@@ -136,7 +144,9 @@ export const productReducer = handleActions(
       delete newProductsMap[deletedProduct._id];
       return {
         ...state,
-        productsMap: newProductsMap
+        productsMap: newProductsMap,
+        // tslint:disable-next-line:triple-equals
+        productsList: _.filter(state.productsList, (obj) => obj._id != deletedProduct._id)
       };
     }
   },

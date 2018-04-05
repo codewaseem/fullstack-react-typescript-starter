@@ -3,7 +3,7 @@ import * as React from "react";
 export default class ProductView extends React.Component<any, any> {
   render() {
     const { image_url, name, description, rsvp_link, _id: id } = this.props.product;
-    const { handleEditClick = (i) => { }, handleDeleteClick = (i) => { } } = this.props;
+    const { handleEditClick, handleDeleteClick } = this.props;
     return (
       <div>
         <div><img src={image_url} /></div>
