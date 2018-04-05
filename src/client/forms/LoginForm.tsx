@@ -2,6 +2,7 @@ import * as React from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { loginUserThunk } from "../../store/user";
+import { withRouter } from "react-router-dom";
 
 const validate = (values) => {
   const errors: any = {};
@@ -14,9 +15,12 @@ const validate = (values) => {
   return errors;
 };
 
-export class LoginForm extends React.Component<any, any> {
+class LoginForm extends React.Component<any, any> {
   render() {
-    const { handleSubmit, pristine, submitting, valid } = this.props;
+    const { handleSubmit, pristine, submitting, valid, auth, redirectTo, history } = this.props;
+    if (auth.isLoggedIn && redirectTo) {
+      history.push(redirectTo);
+    }
     return (
       <form onSubmit={handleSubmit}>
         <div>
@@ -33,6 +37,8 @@ export class LoginForm extends React.Component<any, any> {
   }
 }
 
+const withRouterLoginForm = withRouter(LoginForm);
+
 const ReduxLoginForm = reduxForm({
   form: "Login",
   validate,
@@ -40,7 +46,7 @@ const ReduxLoginForm = reduxForm({
     username: "",
     password: ""
   }
-})(LoginForm);
+})(withRouterLoginForm);
 
 const mapStateToProps = (state) => {
   return {
