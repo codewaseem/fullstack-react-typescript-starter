@@ -14,7 +14,7 @@ function setAuthHeaders() {
 }
 
 export function loginUser(username: string, password: string) {
-  return axios.post("/users/login", {
+  return axios.post("/users/login/", {
     username,
     password
   }).then(parseData)

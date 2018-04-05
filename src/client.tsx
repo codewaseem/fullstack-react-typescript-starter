@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import App from "./client/App";
-import getStore from "./client/state";
+import getStore from "./store";
 import { getAuthData } from "./client/utils";
 // tslint:disable-next-line:max-line-length
 

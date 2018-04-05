@@ -4,7 +4,7 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import App from "../../client/App";
 import { Provider } from "react-redux";
-import getStore from "../../client/state";
+import getStore from "../../store";
 
 let assets: any;
 

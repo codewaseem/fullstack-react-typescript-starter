@@ -14,8 +14,8 @@ server.listen(process.env.PORT || 3000, (err: any) => {
 if (module.hot) {
   console.log("✅  Server-side HMR Enabled! ");
 
-  module.hot.accept("./server", () => {
-    console.log("🔁  HMR Reloading `./server`...");
+  module.hot.accept("./server/app/app", () => {
+    console.log("🔁  HMR Reloading `./server/app/app`...");
     server.removeListener("request", currentApp);
     const newApp = require("./server/app/app").default;
     server.on("request", newApp);

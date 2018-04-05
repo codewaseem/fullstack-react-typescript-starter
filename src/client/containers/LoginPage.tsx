@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { LoginPage } from "../pages";
-import { loginUser } from "../state/actions";
+import { loginUserThunk } from "../../store/user";
 
 const mapStateToProps = (state) => {
   return {
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onFormSubmit: (username, password) => {
-      dispatch(loginUser(username, password));
+      dispatch(loginUserThunk(username, password));
     }
   };
 };
