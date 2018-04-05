@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Container, Card } from "semantic-ui-react";
 import { Link, Route, Switch } from "react-router-dom";
-import { ManageProducts } from "../containers";
+import { ManageProducts } from "./";
 export default class HomePage extends React.PureComponent {
 
   public render() {

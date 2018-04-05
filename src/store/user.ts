@@ -8,7 +8,7 @@ export const {
   logoutSuccess
 } = createActions({
   LOGIN_PENDING: undefined,
-  LOGIN_SUCCESS: (user) => ({ user }),
+  LOGIN_SUCCESS: (data) => ({ data }),
   LOGIN_FAILED: undefined,
   LOGOUT_SUCCESS: undefined
 });
@@ -30,6 +30,7 @@ export const loginUserThunk = (username, password) => {
 const defaultState = {
   isLoggedIn: false,
   user: null,
+  token: null,
   loginFailed: false,
   loginPending: false
 };
@@ -46,13 +47,14 @@ export const userReducer = handleActions(
       };
     }
     ,
-    [loginSuccess](state: any, { payload: { user } }: any) {
+    [loginSuccess](state: any, { payload: { data } }: any) {
       return {
         ...state,
         isLoggedIn: true,
         loginPending: false,
         loginFailed: false,
-        user
+        user: data.user,
+        token: data.token
       };
     },
     [loginFailed](state: any) {

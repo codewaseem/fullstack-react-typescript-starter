@@ -74,7 +74,8 @@ export const deleteProductThunk = (id) => {
 const defaultState = {
   requestPending: false,
   requestFailed: false,
-  productsMap: null,
+  productsList: [],
+  productsMap: {},
   selectedProductId: null
 };
 
@@ -96,6 +97,7 @@ export const productReducer = handleActions(
         ...state,
         requestPending: false,
         requestFailed: false,
+        productsList: products,
         productsMap
       };
     },
@@ -109,10 +111,13 @@ export const productReducer = handleActions(
     [addProductSuccess](state: any, { payload: { addedProduct } }: any) {
       return {
         ...state,
+        productsList: [...state.productsList, addedProduct],
         productsMap: {
           ...state.productsMap,
           [addedProduct._id]: addedProduct
-        }
+        },
+        requestPending: false,
+        requestFailed: false
       };
     },
     [updateProductSuccess](state: any, { payload: { updatedProduct } }: any) {
