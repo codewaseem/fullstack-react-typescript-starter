@@ -50,13 +50,10 @@ class EventsForm extends React.Component<any, any> {
     const { handleSubmit, pristine, submitting, valid } = this.props;
     return (
       <form onSubmit={handleSubmit}>
+        <h2>Event Form</h2>
         <div>
           <label htmlFor="name" >Name</label>
           <Field name="name" component="input" placeholder="Name" />
-        </div>
-        <div>
-          <label htmlFor="title" >Title</label>
-          <Field name="title" component="input" placeholder="Title" />
         </div>
         <div>
           <label htmlFor="privateEvent" >Private? </label>
@@ -118,8 +115,19 @@ export default reduxForm({
   validate,
   initialValues: {
     name: "",
-    title: "",
     description: "",
-    privateEvent: true
+    privateEvent: true,
+    fieldOne: {
+      heading: "",
+      text: ""
+    },
+    fieldTwo: {
+      heading: "",
+      text: ""
+    },
+    fieldThree: {
+      heading: "",
+      text: ""
+    }
   }
 })(EventsForm);

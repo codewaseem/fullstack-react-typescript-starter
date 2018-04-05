@@ -11,12 +11,6 @@ const validate = (values) => {
     return;
   }
 
-  if (!values.name) {
-    errors.name = "Required";
-  }
-  if (!values.title) {
-    errors.title = "Requied";
-  }
   if (values.sectionOne) {
     if (!values.sectionOne.heading) {
       errors.sectionOne.heading = "Required";
@@ -59,14 +53,8 @@ class AboutUsForm extends React.Component<any, any> {
     const { handleSubmit, pristine, submitting, valid } = this.props;
     return (
       <form onSubmit={handleSubmit} >
-        <div>
-          <label htmlFor="name" >Name</label>
-          <Field name="name" component="input" placeholder="Name" />
-        </div>
-        <div>
-          <label htmlFor="title" >Title</label>
-          <Field name="title" component="input" placeholder="Title" />
-        </div>
+        <h2>About Us Form</h2>
+
         <div>
           <h3>Section One</h3>
           <div>
@@ -123,12 +111,11 @@ const defaultAboutSection = {
   title: "",
   description: ""
 };
+
 export default reduxForm({
   form: "AboutUs",
   validate,
   initialValues: {
-    name: "",
-    title: "",
     sectionOne: defaultAboutSection,
     sectionTwo: defaultAboutSection,
     sectionThree: defaultAboutSection
