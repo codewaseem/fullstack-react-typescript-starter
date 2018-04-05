@@ -3,13 +3,13 @@ import { verifyUser, verifyAdmin } from "../controllers/auth";
 import {
   sendJSONResponse, setDetailsFor
 } from "../utils";
-import { GuestSection } from "../models";
+import { PageSetting } from "../models";
 const app = express.Router();
 
 app.get("/", async (req: express.Request, res: express.Response) => {
-  const sections = await GuestSection.find().exec();
+  const sections = await PageSetting.find().exec();
   if (sections && sections.length >= 0) {
-    sendJSONResponse(res, 200, true, sections[0]);
+    sendJSONResponse(res, 200, true, sections);
   } else {
     sendJSONResponse(res, 404, false, "Something went wrong");
   }
@@ -18,8 +18,8 @@ app.get("/", async (req: express.Request, res: express.Response) => {
 app.use(verifyUser);
 app.use(verifyAdmin);
 
-app.post("/", (req: express.Request, res: express.Response) => {
-  setDetailsFor(GuestSection, req.body.details, res);
+app.post("/", async (req: express.Request, res: express.Response) => {
+  setDetailsFor(PageSetting, req.body.details, res);
 });
 
 export default app;

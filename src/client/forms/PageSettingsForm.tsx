@@ -243,13 +243,15 @@ export default reduxForm({
       name: "",
       title: "",
       isShown: true,
-      isLinked: true
+      isLinked: true,
+      mailTo: ""
     },
     contactSection: {
       name: "",
       title: "",
       isShown: true,
-      isLinked: true
+      isLinked: true,
+      mailTo: ""
     }
   }
 })(PageSettingsForm);

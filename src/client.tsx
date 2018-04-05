@@ -6,11 +6,7 @@ import App from "./client/App";
 import getStore from "./client/state";
 import { getAuthData } from "./client/utils";
 // tslint:disable-next-line:max-line-length
-import {
-  getPageSections, getPageSectionsSuccess,
-  getPageSectionsFailure, fetchPageSection,
-  updateAboutSectionRequest, updateEventSectionRequest
-} from "./client/state/actions/pageSectionActions";
+
 import "semantic-ui-css/semantic.min.css";
 
 let data;
@@ -23,11 +19,6 @@ if ((window as any).__INITIAL_DATA__) {
 
 const store = getStore(data);
 (window as any).store = store;
-(window as any).getPageSections = getPageSections;
-(window as any).getPageSectionsSuccess = getPageSectionsSuccess;
-(window as any).getPageSectionsFailure = getPageSectionsFailure;
-(window as any).fetchPageSection = fetchPageSection;
-(window as any).updateAboutSectionRequest = updateAboutSectionRequest;
 
 ReactDOM.hydrate(
   <Provider store={store}>

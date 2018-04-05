@@ -31,10 +31,6 @@ class GuestForm extends React.Component<any, any> {
           <label htmlFor="imageLink" >Image Link</label>
           <Field name="imageLink" component="input" placeholder="Image" />
         </div>
-        <div>
-          <label htmlFor="isShown" >isShown</label>
-          <Field name="isShown" component="input" type="checkbox" />
-        </div>
         <button type="submit" disabled={pristine || submitting || !valid}>Save</button>
       </form>
     );
@@ -46,7 +42,6 @@ export default reduxForm({
   validate,
   initialValues: {
     name: "",
-    isShown: true,
     imageLink: ""
   }
 })(GuestForm);

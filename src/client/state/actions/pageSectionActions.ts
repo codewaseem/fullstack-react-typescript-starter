@@ -1,9 +1,7 @@
 import { createActions, handleActions } from "redux-actions";
 import {
   getPageSections as getPageSectionsRequest,
-  updateAboutSection, updateContactSection,
-  updateEventSection, updateGuestSection,
-  updateSponsorSection, updateTestimonialSection
+  updateAboutSection
 } from "../../../shared";
 const defaultState = { isLoading: false, isError: false, pageSections: undefined };
 
@@ -67,24 +65,6 @@ export const updateAboutSectionRequest = (details) => {
   return async (dispatch) => {
     dispatch(getPageSections());
     return updateAboutSection(details).then((updatedSection) => {
-      return dispatch(pageSectionUpdateSuccess(updatedSection));
-    }).catch(getPageSectionsFailure);
-  };
-};
-
-export const updateEventSectionRequest = (details) => {
-  return async (dispatch) => {
-    dispatch(getPageSections());
-    return updateEventSection(details).then((updatedSection) => {
-      return dispatch(pageSectionUpdateSuccess(updatedSection));
-    }).catch(getPageSectionsFailure);
-  };
-};
-
-export const updateContactSectionRequest = (details) => {
-  return async (dispatch) => {
-    dispatch(getPageSections());
-    return updateContactSection(details).then((updatedSection) => {
       return dispatch(pageSectionUpdateSuccess(updatedSection));
     }).catch(getPageSectionsFailure);
   };

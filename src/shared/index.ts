@@ -34,7 +34,7 @@ function parseData(response: any) {
 }
 
 export function getProducts() {
-  return axios.get("/products/getAll")
+  return axios.get("/products/")
     .then(parseData)
     .then(verifyData);
 }
@@ -56,32 +56,12 @@ export function updateProduct(id: any, details: any) {
 
 export function getPageSections() {
   setAuthHeaders();
-  return axios.get("/pageSections/")
+  return axios.get("/pageSettings/")
     .then(parseData).then(verifyData);
 }
 
 export function updateAboutSection(details: any) {
-  return postRequestForPageSection("/aboutSection", details);
-}
-
-export function updateContactSection(details: any) {
-  return postRequestForPageSection("/contactSection", details);
-}
-
-export function updateSponsorSection(details: any) {
-  return postRequestForPageSection("/sponsorsSection", details);
-}
-
-export function updateTestimonialSection(details: any) {
-  return postRequestForPageSection("/testimonialsSection/", details);
-}
-
-export function updateGuestSection(details: any) {
-  return postRequestForPageSection("/guestSection/", details);
-}
-
-export function updateEventSection(details: any) {
-  return postRequestForPageSection("/eventSection/", details);
+  return postRequestForPageSection("/aboutSection/", details);
 }
 
 function postRequestForPageSection(sectionPath: string, details: any) {

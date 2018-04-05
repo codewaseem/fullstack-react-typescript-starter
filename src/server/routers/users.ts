@@ -6,7 +6,7 @@ import { registerMember } from "../controllers/users";
 import { sendJSONResponse } from "../utils";
 const app = express.Router();
 
-app.post("/login", passport.authenticate("local"), (req: any, res: express.Response) => {
+app.post("/login/", passport.authenticate("local"), (req: any, res: express.Response) => {
   const token = getToken({ _id: req.user._id });
   const user = _.pick(req.user, ["firstName", "middleName", "lastName", "username", "_id"]);
   res.setHeader("Authorization", "Bearer " + token);
@@ -17,12 +17,12 @@ app.post("/login", passport.authenticate("local"), (req: any, res: express.Respo
 });
 
 app.use(verifyUser);
-app.post("/logout", (req: any, res: express.Response) => {
+app.post("/logout/", (req: any, res: express.Response) => {
   req.logout();
   sendJSONResponse(res, 200, true);
 });
 
 app.use(verifyAdmin);
-app.post("/register", registerMember);
+app.post("/register/", registerMember);
 
 export default app;

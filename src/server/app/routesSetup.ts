@@ -1,19 +1,18 @@
 import { Express } from "express";
 import {
-  allRoutesRouter, usersRouter, productsRouter, contactRouter,
-  sponsorsRouter, testimonialRouter, guestRouter, eventsRouter,
-  aboutRouter, pageSectionRouter
+  allRoutes, users, products,
+  sponsors, testimonials, guests, events,
+  aboutSection, pageSettings
 } from "../routers";
 
 export default function setup(app: Express) {
-  app.use("/users/", usersRouter);
-  app.use("/products/", productsRouter);
-  app.use("/contactSection/", contactRouter);
-  app.use("/sponsorsSection/", sponsorsRouter);
-  app.use("/testimonialsSection/", testimonialRouter);
-  app.use("/guestSection/", guestRouter);
-  app.use("/eventSection/", eventsRouter);
-  app.use("/aboutSection/", aboutRouter);
-  app.use("/pageSections/", pageSectionRouter);
-  app.use("*", allRoutesRouter);
+  app.use("/users/", users);
+  app.use("/products/", products);
+  app.use("/sponsorsSection/", sponsors);
+  app.use("/testimonialsSection/", testimonials);
+  app.use("/guestSection/", guests);
+  app.use("/eventSection/", events);
+  app.use("/aboutSection/", aboutSection);
+  app.use("/pageSettings/", pageSettings);
+  app.use("*", allRoutes);
 }

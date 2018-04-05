@@ -1,29 +1,124 @@
 import mongoose from "./mongoose";
 
-const PageSectionSchema = new mongoose.Schema({
-  name: {
+const PageSettingSchema = new mongoose.Schema({
+  pageTitle: {
     type: String,
     required: true
   },
-  title: String,
-  isShown: {
-    type: Boolean,
-    default: true
+  pageLogoUrl: {
+    type: String,
+    required: true
   },
-  isLinked: {
-    type: Boolean,
-    default: true
+  socialLinks: {
+    facebook: String,
+    google: String,
+    twitter: String,
+    linkedIn: String,
+    instagram: String
   },
-  order: {
-    type: Number,
-    default: 1
+  eventSection: {
+    name: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    isShown: {
+      type: Boolean,
+      default: true
+    },
+    isLinked: {
+      type: Boolean,
+      default: true
+    }
   },
-  description: String
+  guestSection: {
+    name: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    isShown: {
+      type: Boolean,
+      default: true
+    },
+    isLinked: {
+      type: Boolean,
+      default: true
+    }
+  },
+  testimonialSection: {
+    name: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    isShown: {
+      type: Boolean,
+      default: true
+    },
+    isLinked: {
+      type: Boolean,
+      default: true
+    }
+  },
+  sponsorSection: {
+    name: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    isShown: {
+      type: Boolean,
+      default: true
+    },
+    isLinked: {
+      type: Boolean,
+      default: true
+    },
+    mailTo: {
+      type: String,
+      required: true
+    }
+  },
+  contactSection: {
+    name: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    isShown: {
+      type: Boolean,
+      default: true
+    },
+    isLinked: {
+      type: Boolean,
+      default: true
+    },
+    mailTo: {
+      type: String,
+      required: true
+    }
+  }
 });
 
-export const PageSection = mongoose.model("PageSection", PageSectionSchema);
+export const PageSetting = mongoose.model("PageSetting", PageSettingSchema);
 
-export const AboutSection = PageSection.discriminator("AboutSection", new mongoose.Schema({
+const AboutSectionSchema = new mongoose.Schema({
   sectionOne: {
     heading: {
       type: String,
@@ -67,132 +162,119 @@ export const AboutSection = PageSection.discriminator("AboutSection", new mongoo
     }
   }
 
-}));
+});
 
-export const EventSection = PageSection.discriminator("EventSection", new mongoose.Schema({
-  events: [{
-    name: {
-      type: String,
-      required: true
-    },
-    privateEvent: {
-      type: Boolean,
-      default: false
-    },
-    description: {
-      type: String,
-      required: true
-    },
-    date: {
-      type: Date,
-      required: true
-    },
-    rsvp_link: {
-      type: String,
-      required: true
-    },
-    fieldOne: {
-      heading: {
-        type: String,
-        required: true
-      },
-      text: {
-        type: String,
-        required: true
-      }
-    },
-    fieldTwo: {
-      heading: {
-        type: String,
-        required: true
-      },
-      text: {
-        type: String,
-        required: true
-      }
-    },
-    fieldThree: {
-      heading: {
-        type: String,
-        required: true
-      },
-      text: {
-        type: String,
-        required: true
-      }
-    }
-  }]
-}));
+export const AboutSection = mongoose.model("AboutSection", AboutSectionSchema);
 
-export const GuestSection = PageSection.discriminator("GuestSection", new mongoose.Schema({
-  guests: [{
-    imageLink: {
+const EventSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  privateEvent: {
+    type: Boolean,
+    default: false
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    required: true
+  },
+  rsvp_link: {
+    type: String,
+    required: true
+  },
+  fieldOne: {
+    heading: {
       type: String,
       required: true
     },
-    jobTitle: {
-      type: String,
-      required: true
-    },
-    name: {
-      type: String,
-      required: true
-    },
-    description: {
-      type: String,
-      required: true
-    },
-    socialLinks: {
-      facebook: String,
-      twitter: String,
-      instagram: String,
-      linkedIn: String,
-      google: String
-    }
-  }]
-}));
-
-export const TestimonialSection = PageSection.discriminator("TestimonialSection", new mongoose.Schema({
-  testimonials: [{
-    name: {
-      type: String,
-      required: true
-    },
-    testimonial: {
-      type: String,
-      required: true
-    },
-    imageLink: {
+    text: {
       type: String,
       required: true
     }
-  }]
-}));
-
-export const SponsorSection = PageSection.discriminator("SponsorSection", new mongoose.Schema({
-  sponsors: [{
-    name: {
+  },
+  fieldTwo: {
+    heading: {
       type: String,
       required: true
     },
-    imageLink: {
+    text: {
       type: String,
       required: true
-    },
-    isShown: {
-      type: Boolean,
-      default: true
     }
-  }],
-  becomeSponsorMailTo: {
+  },
+  fieldThree: {
+    heading: {
+      type: String,
+      required: true
+    },
+    text: {
+      type: String,
+      required: true
+    }
+  }
+});
+
+export const Event = mongoose.model("Event", EventSchema);
+
+const GuestSchema = new mongoose.Schema({
+  imageLink: {
+    type: String,
+    required: true
+  },
+  jobTitle: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  socialLinks: {
+    facebook: String,
+    twitter: String,
+    instagram: String,
+    linkedIn: String,
+    google: String
+  }
+});
+
+export const Guest = mongoose.model("Guest", GuestSchema);
+
+const TestimonialSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  testimonial: {
+    type: String,
+    required: true
+  },
+  imageLink: {
     type: String,
     required: true
   }
-}));
+});
 
-export const ContactSection = PageSection.discriminator("ContactSection", new mongoose.Schema({
-  contactMailTo: {
+export const Testimonial = mongoose.model("Testimonial", TestimonialSchema);
+
+const SponsorSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  imageLink: {
     type: String,
     required: true
   }
-}));
+});
+
+export const Sponsor = mongoose.model("Sponsor", SponsorSchema);
