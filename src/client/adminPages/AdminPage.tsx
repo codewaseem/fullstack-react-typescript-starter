@@ -1,8 +1,10 @@
 import * as React from "react";
 import { Container, Card } from "semantic-ui-react";
 import { Link, Route, Switch } from "react-router-dom";
-import { ManageProducts } from "./";
-export default class HomePage extends React.PureComponent {
+import { ManageProductsView } from "./";
+import { EnsureAdmin } from "./EnsureIsAdmin";
+
+class HomePage extends React.Component {
 
   public render() {
     return (
@@ -12,7 +14,7 @@ export default class HomePage extends React.PureComponent {
         <Switch>
           <Route
             path="/admin-panel/manage-products"
-            component={ManageProducts}
+            component={ManageProductsView}
           />
           <Route
             // tslint:disable-next-line:jsx-no-multiline-js
@@ -64,3 +66,5 @@ export default class HomePage extends React.PureComponent {
     );
   }
 }
+
+export default EnsureAdmin(HomePage);

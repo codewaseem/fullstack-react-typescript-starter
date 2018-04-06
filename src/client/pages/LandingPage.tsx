@@ -12,7 +12,6 @@ export default class LandingPage extends React.PureComponent {
       <div>
         <h1>This is landing page</h1>
         <Link to={"/login"}>Login</Link>
-        <ProductForm redirectTo="/admin-panel" />
       </div>
     );
   }

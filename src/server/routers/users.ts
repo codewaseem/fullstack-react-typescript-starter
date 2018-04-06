@@ -24,5 +24,8 @@ app.post("/logout/", (req: any, res: express.Response) => {
 
 app.use(verifyAdmin);
 app.post("/register/", registerMember);
+app.post("/isAdmin/", (req: any, res: express.Response) => {
+  sendJSONResponse(res, 200, true);
+});
 
 export default app;

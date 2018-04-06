@@ -21,6 +21,11 @@ export function loginUser(username: string, password: string) {
     .then(verifyData);
 }
 
+export function verifyAdmin() {
+  setAuthHeaders();
+  return axios.post("/users/isAdmin").then(parseData).then(verifyData);
+}
+
 function verifyData(response: any) {
   if (response.success) {
     return response.data;

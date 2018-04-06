@@ -1,23 +1,17 @@
 import * as Loadable from "react-loadable";
 import * as React from "react";
-
-export const Products = Loadable({
-  loader: () => import("./ManageProducts"),
-  loading() {
-    return <div>Loading...</div>;
-  }
-});
+import { Loader } from "../components";
 
 export const LoginPage = Loadable({
   loader: () => import("./LoginPage"),
   loading() {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 });
 
-export const ManageProducts = Loadable({
-  loader: () => import("./ManageProducts"),
+export const AdminLoginPage = Loadable({
+  loader: () => import("./AdminLoginPage"),
   loading() {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 });

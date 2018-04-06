@@ -7,7 +7,7 @@ export default class LoginPage extends React.Component {
   render() {
     return (
       <div>
-        <LoginForm redirectTo="/" />
+        <LoginForm redirectTo="/admin-panel" />
       </div>
     );
   }
