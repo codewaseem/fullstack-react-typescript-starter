@@ -3,7 +3,7 @@ import { Container, Card } from "semantic-ui-react";
 import { Link, Route, Switch } from "react-router-dom";
 import {
   ManageProductsView, ManageAboutUsView, ManageEventsView,
-  ManageGuestsView, ManageSponsorsView
+  ManageGuestsView, ManageSponsorsView, ManageTestimonialsView
 } from "./";
 import { EnsureAdmin } from "./EnsureIsAdmin";
 
@@ -34,6 +34,10 @@ class HomePage extends React.Component {
           <Route
             path="/admin-panel/manage-sponsors"
             component={ManageSponsorsView}
+          />
+          <Route
+            path="/admin-panel/manage-testimonials"
+            component={ManageTestimonialsView}
           />
           <Route
             // tslint:disable-next-line:jsx-no-multiline-js
@@ -70,10 +74,10 @@ class HomePage extends React.Component {
                       <Card.Description>Manage driven society sponsors.</Card.Description>
                     </Card.Content>
                   </Card>
-                  <Card onClick={() => { props.history.push(`${props.match.url}/account-settings`); }}>
+                  <Card onClick={() => { props.history.push(`${props.match.url}/manage-testimonials`); }}>
                     <Card.Content>
-                      <Card.Header>Account Setting</Card.Header>
-                      <Card.Description>Manage account, change password.</Card.Description>
+                      <Card.Header>Testimonials</Card.Header>
+                      <Card.Description>Manage driven society sponsors</Card.Description>
                     </Card.Content>
                   </Card>
                 </Card.Group>

@@ -43,3 +43,10 @@ export const ManageSponsorsView = Loadable({
     return <Loader />;
   }
 });
+
+export const ManageTestimonialsView = Loadable({
+  loader: () => import("./ManageTestimonials"),
+  loading() {
+    return <Loader />;
+  }
+});

@@ -31,5 +31,12 @@ export const SponsorViewList = Loadable({
   }
 });
 
+export const TestimonialViewList = Loadable({
+  loader: () => import("./TestimonialViewList"),
+  loading() {
+    return (<Loader />);
+  }
+});
+
 export { default as Loader } from "./Loader";
 export { default as PrivateRoute } from "./PrivateRoute";

@@ -177,3 +177,31 @@ export function deleteSponsor(id: string) {
     id
   }).then(parseData).then(verifyData);
 }
+
+export function getTestimonials() {
+  return axios.get("/testimonials/")
+    .then(parseData)
+    .then(verifyData);
+}
+
+export function addTestimonial(details: any) {
+  setAuthHeaders();
+  return axios.post("/testimonials/add", {
+    details
+  }).then(parseData).then(verifyData);
+}
+
+export function updateTestimonial(id: any, details: any) {
+  setAuthHeaders();
+  return axios.post("/testimonials/update", {
+    id,
+    details
+  }).then(parseData).then(verifyData);
+}
+
+export function deleteTestimonial(id: string) {
+  setAuthHeaders();
+  return axios.post("/testimonials/delete/", {
+    id
+  }).then(parseData).then(verifyData);
+}
