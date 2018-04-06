@@ -15,3 +15,10 @@ export const ManageProductsView = Loadable({
     return <Loader />;
   }
 });
+
+export const ManageAboutUsView = Loadable({
+  loader: () => import("./ManageAboutSection"),
+  loading() {
+    return <Loader />;
+  }
+});

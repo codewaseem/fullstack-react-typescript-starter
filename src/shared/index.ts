@@ -78,7 +78,12 @@ export function updatePageSetting(details: any) {
     details
   }).then(parseData).then(verifyData);
 }
-export function updateAboutSection(details: any) {
+
+export function getAboutUsDetails() {
+  return axios.get("/aboutSection").then(parseData).then(verifyData);
+}
+
+export function updateAboutUsDetails(details: any) {
   return postRequestForPageSection("/aboutSection/", details);
 }
 

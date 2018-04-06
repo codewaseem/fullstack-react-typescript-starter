@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import App from "./client/App";
 import getStore from "./store";
 import { getAuthData } from "./client/utils";
-import { getProductsThunk, deleteProductThunk } from "./store/products";
+import { getAboutUsThunk } from "./store/aboutus";
 // tslint:disable-next-line:max-line-length
 
 import "semantic-ui-css/semantic.min.css";
@@ -20,8 +20,7 @@ if ((window as any).__INITIAL_DATA__) {
 
 const store = getStore(data);
 (window as any).store = store;
-(window as any).getProducts = getProductsThunk;
-(window as any).deleteProduct = deleteProductThunk;
+(window as any).getAboutUsThunk = getAboutUsThunk;
 
 ReactDOM.hydrate(
   <Provider store={store}>
