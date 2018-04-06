@@ -29,3 +29,10 @@ export const ManageEventsView = Loadable({
     return <Loader />;
   }
 });
+
+export const ManageGuestsView = Loadable({
+  loader: () => import("./ManageGuests"),
+  loading() {
+    return <Loader />;
+  }
+});

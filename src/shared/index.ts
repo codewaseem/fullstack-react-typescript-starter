@@ -121,3 +121,31 @@ export function deleteEvent(id: string) {
     id
   }).then(parseData).then(verifyData);
 }
+
+export function getGuests() {
+  return axios.get("/guests/")
+    .then(parseData)
+    .then(verifyData);
+}
+
+export function addGuest(details: any) {
+  setAuthHeaders();
+  return axios.post("/guests/add", {
+    details
+  }).then(parseData).then(verifyData);
+}
+
+export function updateGuest(id: any, details: any) {
+  setAuthHeaders();
+  return axios.post("/guests/update", {
+    id,
+    details
+  }).then(parseData).then(verifyData);
+}
+
+export function deleteGuest(id: string) {
+  setAuthHeaders();
+  return axios.post("/guests/delete/", {
+    id
+  }).then(parseData).then(verifyData);
+}

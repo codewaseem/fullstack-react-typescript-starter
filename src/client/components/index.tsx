@@ -17,5 +17,12 @@ export const EventViewList = Loadable({
   }
 });
 
+export const GuestViewList = Loadable({
+  loader: () => import("./GuestViewList"),
+  loading() {
+    return (<Loader />);
+  }
+});
+
 export { default as Loader } from "./Loader";
 export { default as PrivateRoute } from "./PrivateRoute";

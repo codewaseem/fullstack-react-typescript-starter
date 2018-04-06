@@ -20,7 +20,10 @@ const validate = (values) => {
   }
 };
 
-class GuestForm extends React.Component<any, any> {
+class TestimonialForm extends React.Component<any, any> {
+  componentDidMount() {
+    this.props.initialize(this.props.initialValues);
+  }
   render() {
     const { handleSubmit, pristine, submitting, valid } = this.props;
     return (
@@ -52,4 +55,4 @@ export default reduxForm({
     Testimonial: "",
     imageLink: ""
   }
-})(GuestForm);
+})(TestimonialForm);

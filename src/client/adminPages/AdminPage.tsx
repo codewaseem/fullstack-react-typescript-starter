@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Container, Card } from "semantic-ui-react";
 import { Link, Route, Switch } from "react-router-dom";
-import { ManageProductsView, ManageAboutUsView, ManageEventsView } from "./";
+import { ManageProductsView, ManageAboutUsView, ManageEventsView, ManageGuestsView } from "./";
 import { EnsureAdmin } from "./EnsureIsAdmin";
 
 class HomePage extends React.Component {
@@ -25,6 +25,10 @@ class HomePage extends React.Component {
             component={ManageEventsView}
           />
           <Route
+            path="/admin-panel/manage-guests"
+            component={ManageGuestsView}
+          />
+          <Route
             // tslint:disable-next-line:jsx-no-multiline-js
             render={(props) => {
               return (
@@ -41,10 +45,10 @@ class HomePage extends React.Component {
                       <Card.Description>Change about us section</Card.Description>
                     </Card.Content>
                   </Card>
-                  <Card onClick={() => { props.history.push(`${props.match.url}/members`); }} >
+                  <Card onClick={() => { props.history.push(`${props.match.url}/manage-guests`); }} >
                     <Card.Content>
-                      <Card.Header>Members</Card.Header>
-                      <Card.Description>Manage driven society members</Card.Description>
+                      <Card.Header>Guests</Card.Header>
+                      <Card.Description>Manage driven society guests</Card.Description>
                     </Card.Content>
                   </Card>
                   <Card onClick={() => { props.history.push(`${props.match.url}/manage-events`); }}>

@@ -8,9 +8,9 @@ import {
 export default function setup(app: Express) {
   app.use("/users/", users);
   app.use("/products/", products);
-  app.use("/sponsorsSection/", sponsors);
-  app.use("/testimonialsSection/", testimonials);
-  app.use("/guestSection/", guests);
+  app.use("/sponsors/", sponsors);
+  app.use("/testimonials/", testimonials);
+  app.use("/guests/", guests);
   app.use("/events/", events);
   app.use("/aboutSection/", aboutSection);
   app.use("/pageSettings/", pageSettings);
