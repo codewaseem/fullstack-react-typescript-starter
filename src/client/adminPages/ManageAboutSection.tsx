@@ -6,7 +6,9 @@ import { getAboutUsThunk, postAboutUsThunk } from "../../store/aboutus";
 class ManageAboutUs extends React.Component<any, any> {
 
   state = {
-    initialValues: null
+    initialValues: null,
+    updated: false,
+    error: false
   };
 
   componentDidMount() {
@@ -19,8 +21,32 @@ class ManageAboutUs extends React.Component<any, any> {
     });
   }
 
+  handleSubmit = (details) => {
+    this.props.submitAboutUsDetails(details)
+      .then(() => {
+        this.setState(() => {
+          return {
+            updated: true
+          };
+        });
+      })
+      .catch(() => {
+        this.setState(() => {
+          return {
+            error: true
+          };
+        });
+      });
+  }
+
   render() {
-    return <AboutUsForm initialValues={this.state.initialValues} onSubmit={this.props.submitAboutUsDetails} />;
+    return (
+      <div>
+        <AboutUsForm initialValues={this.state.initialValues} onSubmit={this.handleSubmit} />
+        {this.state.updated && <div>Updated</div>}
+        {this.state.error && <div>Something went wrong</div>}
+      </div>
+    );
   }
 }
 
