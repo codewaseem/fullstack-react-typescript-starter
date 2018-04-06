@@ -20,6 +20,13 @@ const UserSchema = new mongoose.Schema({
   dob: {
     type: Date
   },
+  address: String,
+  jobTitle: String,
+  personalInfo: String,
+  interests: String,
+  fbLink: String,
+  instagramLink: String,
+  twitterLink: String,
   password: {
     type: String,
     select: false
