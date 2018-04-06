@@ -10,5 +10,12 @@ export const ProductViewList = Loadable({
   }
 });
 
+export const EventViewList = Loadable({
+  loader: () => import("./EventViewList"),
+  loading() {
+    return (<Loader />);
+  }
+});
+
 export { default as Loader } from "./Loader";
 export { default as PrivateRoute } from "./PrivateRoute";

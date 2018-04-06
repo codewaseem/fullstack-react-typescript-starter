@@ -22,3 +22,10 @@ export const ManageAboutUsView = Loadable({
     return <Loader />;
   }
 });
+
+export const ManageEventsView = Loadable({
+  loader: () => import("./ManageEvents"),
+  loading() {
+    return <Loader />;
+  }
+});

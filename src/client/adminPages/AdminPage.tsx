@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Container, Card } from "semantic-ui-react";
 import { Link, Route, Switch } from "react-router-dom";
-import { ManageProductsView, ManageAboutUsView } from "./";
+import { ManageProductsView, ManageAboutUsView, ManageEventsView } from "./";
 import { EnsureAdmin } from "./EnsureIsAdmin";
 
 class HomePage extends React.Component {
@@ -19,6 +19,10 @@ class HomePage extends React.Component {
           <Route
             path="/admin-panel/manage-about-us"
             component={ManageAboutUsView}
+          />
+          <Route
+            path="/admin-panel/manage-events"
+            component={ManageEventsView}
           />
           <Route
             // tslint:disable-next-line:jsx-no-multiline-js
@@ -43,7 +47,7 @@ class HomePage extends React.Component {
                       <Card.Description>Manage driven society members</Card.Description>
                     </Card.Content>
                   </Card>
-                  <Card onClick={() => { props.history.push(`${props.match.url}/events`); }}>
+                  <Card onClick={() => { props.history.push(`${props.match.url}/manage-events`); }}>
                     <Card.Content>
                       <Card.Header>Events</Card.Header>
                       <Card.Description>Manage calendapanelr events</Card.Description>

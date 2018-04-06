@@ -11,7 +11,7 @@ export default function setup(app: Express) {
   app.use("/sponsorsSection/", sponsors);
   app.use("/testimonialsSection/", testimonials);
   app.use("/guestSection/", guests);
-  app.use("/eventSection/", events);
+  app.use("/events/", events);
   app.use("/aboutSection/", aboutSection);
   app.use("/pageSettings/", pageSettings);
   app.use("*", allRoutes);

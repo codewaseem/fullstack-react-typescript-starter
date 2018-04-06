@@ -46,6 +46,9 @@ const validate = (values) => {
 };
 
 class EventsForm extends React.Component<any, any> {
+  componentDidMount() {
+    this.props.initialize(this.props.initialValues);
+  }
   render() {
     const { handleSubmit, pristine, submitting, valid } = this.props;
     return (
@@ -113,6 +116,7 @@ class EventsForm extends React.Component<any, any> {
 export default reduxForm({
   form: "EventForm",
   validate,
+  enableReinitialize: true,
   initialValues: {
     name: "",
     description: "",

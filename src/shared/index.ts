@@ -93,3 +93,31 @@ function postRequestForPageSection(sectionPath: string, details: any) {
     details
   }).then(parseData).then(verifyData);
 }
+
+export function getEvents() {
+  return axios.get("/events/")
+    .then(parseData)
+    .then(verifyData);
+}
+
+export function addEvent(details: any) {
+  setAuthHeaders();
+  return axios.post("/events/add", {
+    details
+  }).then(parseData).then(verifyData);
+}
+
+export function updateEvent(id: any, details: any) {
+  setAuthHeaders();
+  return axios.post("/events/update", {
+    id,
+    details
+  }).then(parseData).then(verifyData);
+}
+
+export function deleteEvent(id: string) {
+  setAuthHeaders();
+  return axios.post("/events/delete/", {
+    id
+  }).then(parseData).then(verifyData);
+}
