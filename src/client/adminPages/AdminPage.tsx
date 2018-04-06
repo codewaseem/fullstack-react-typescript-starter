@@ -1,7 +1,10 @@
 import * as React from "react";
 import { Container, Card } from "semantic-ui-react";
 import { Link, Route, Switch } from "react-router-dom";
-import { ManageProductsView, ManageAboutUsView, ManageEventsView, ManageGuestsView } from "./";
+import {
+  ManageProductsView, ManageAboutUsView, ManageEventsView,
+  ManageGuestsView, ManageSponsorsView
+} from "./";
 import { EnsureAdmin } from "./EnsureIsAdmin";
 
 class HomePage extends React.Component {
@@ -27,6 +30,10 @@ class HomePage extends React.Component {
           <Route
             path="/admin-panel/manage-guests"
             component={ManageGuestsView}
+          />
+          <Route
+            path="/admin-panel/manage-sponsors"
+            component={ManageSponsorsView}
           />
           <Route
             // tslint:disable-next-line:jsx-no-multiline-js
@@ -57,10 +64,10 @@ class HomePage extends React.Component {
                       <Card.Description>Manage calendapanelr events</Card.Description>
                     </Card.Content>
                   </Card>
-                  <Card onClick={() => { props.history.push(`${props.match.url}/account-settings`); }}>
+                  <Card onClick={() => { props.history.push(`${props.match.url}/manage-sponsors`); }}>
                     <Card.Content>
-                      <Card.Header>Store</Card.Header>
-                      <Card.Description>Manage driven society store.</Card.Description>
+                      <Card.Header>Sponsors</Card.Header>
+                      <Card.Description>Manage driven society sponsors.</Card.Description>
                     </Card.Content>
                   </Card>
                   <Card onClick={() => { props.history.push(`${props.match.url}/account-settings`); }}>

@@ -36,3 +36,10 @@ export const ManageGuestsView = Loadable({
     return <Loader />;
   }
 });
+
+export const ManageSponsorsView = Loadable({
+  loader: () => import("./ManageSponsors"),
+  loading() {
+    return <Loader />;
+  }
+});

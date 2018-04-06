@@ -149,3 +149,31 @@ export function deleteGuest(id: string) {
     id
   }).then(parseData).then(verifyData);
 }
+
+export function getSponsors() {
+  return axios.get("/sponsors/")
+    .then(parseData)
+    .then(verifyData);
+}
+
+export function addSponsor(details: any) {
+  setAuthHeaders();
+  return axios.post("/sponsors/add", {
+    details
+  }).then(parseData).then(verifyData);
+}
+
+export function updateSponsor(id: any, details: any) {
+  setAuthHeaders();
+  return axios.post("/sponsors/update", {
+    id,
+    details
+  }).then(parseData).then(verifyData);
+}
+
+export function deleteSponsor(id: string) {
+  setAuthHeaders();
+  return axios.post("/sponsors/delete/", {
+    id
+  }).then(parseData).then(verifyData);
+}

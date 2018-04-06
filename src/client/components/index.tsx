@@ -24,5 +24,12 @@ export const GuestViewList = Loadable({
   }
 });
 
+export const SponsorViewList = Loadable({
+  loader: () => import("./SponsorViewList"),
+  loading() {
+    return (<Loader />);
+  }
+});
+
 export { default as Loader } from "./Loader";
 export { default as PrivateRoute } from "./PrivateRoute";
