@@ -278,3 +278,24 @@ const SponsorSchema = new mongoose.Schema({
 });
 
 export const Sponsor = mongoose.model("Sponsor", SponsorSchema);
+
+const NewsArticleSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    required: true,
+  },
+  summary: {
+    type: String,
+    required: true
+  },
+  fullArticleLink: {
+    type: String,
+    required: true
+  }
+});
+
+export const Article = mongoose.model("Article", NewsArticleSchema);

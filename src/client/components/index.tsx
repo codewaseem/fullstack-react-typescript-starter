@@ -38,5 +38,12 @@ export const TestimonialViewList = Loadable({
   }
 });
 
+export const ArticleViewList = Loadable({
+  loader: () => import("./ArticleViewList"),
+  loading() {
+    return (<Loader />);
+  }
+});
+
 export { default as Loader } from "./Loader";
 export { default as PrivateRoute } from "./PrivateRoute";

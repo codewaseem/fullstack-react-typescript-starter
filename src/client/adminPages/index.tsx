@@ -50,3 +50,10 @@ export const ManageTestimonialsView = Loadable({
     return <Loader />;
   }
 });
+
+export const ManageArticlesView = Loadable({
+  loader: () => import("./ManageArticles"),
+  loading() {
+    return <Loader />;
+  }
+});

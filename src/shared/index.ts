@@ -205,3 +205,31 @@ export function deleteTestimonial(id: string) {
     id
   }).then(parseData).then(verifyData);
 }
+
+export function getArticles() {
+  return axios.get("/articles/")
+    .then(parseData)
+    .then(verifyData);
+}
+
+export function addArticle(details: any) {
+  setAuthHeaders();
+  return axios.post("/articles/add", {
+    details
+  }).then(parseData).then(verifyData);
+}
+
+export function updateArticle(id: any, details: any) {
+  setAuthHeaders();
+  return axios.post("/articles/update", {
+    id,
+    details
+  }).then(parseData).then(verifyData);
+}
+
+export function deleteArticle(id: string) {
+  setAuthHeaders();
+  return axios.post("/articles/delete/", {
+    id
+  }).then(parseData).then(verifyData);
+}
