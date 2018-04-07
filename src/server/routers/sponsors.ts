@@ -6,8 +6,9 @@ import {
 } from "../utils";
 import { Sponsor } from "../models";
 const app = express.Router();
+import cors from "cors";
 
-app.get("/", async (req: express.Request, res: express.Response) => {
+app.get("/", cors(), async (req: express.Request, res: express.Response) => {
   const sections = await Sponsor.find().exec();
   if (sections && sections.length >= 0) {
     sendJSONResponse(res, 200, true, sections);

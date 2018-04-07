@@ -6,9 +6,11 @@ import {
   getAllModels, getModelById
 } from "../utils";
 import { Product } from "../models";
+import cors from "cors";
+
 const app = express.Router();
 
-app.get("/", (req: express.Request, res: express.Response) => {
+app.get("/", cors(), (req: express.Request, res: express.Response) => {
   getAllModels(Product, res);
 });
 

@@ -5,8 +5,9 @@ import {
 } from "../utils";
 import { PageSetting } from "../models";
 const app = express.Router();
+import cors from "cors";
 
-app.get("/", async (req: express.Request, res: express.Response) => {
+app.get("/", cors(), async (req: express.Request, res: express.Response) => {
   const sections = await PageSetting.find().exec();
   if (sections && sections.length >= 0) {
     sendJSONResponse(res, 200, true, sections);

@@ -4,9 +4,10 @@ import {
   sendJSONResponse, setDetailsFor
 } from "../utils";
 import { AboutSection } from "../models";
+import cors from "cors";
 const app = express.Router();
 
-app.get("/", async (req: express.Request, res: express.Response) => {
+app.get("/", cors(), async (req: express.Request, res: express.Response) => {
   const sections = await AboutSection.find().exec();
   if (sections && sections.length >= 0) {
     sendJSONResponse(res, 200, true, sections[0]);
