@@ -12,7 +12,8 @@ export default class ProductForm extends React.Component<any, any> {
         image_url: "",
         rsvp_link: "",
         description: "",
-        btn_txt: ""
+        btn_txt: "",
+        order: ""
       };
     }
     this.state = {
@@ -21,6 +22,7 @@ export default class ProductForm extends React.Component<any, any> {
       rsvp_link: product.rsvp_link,
       description: product.description,
       btn_txt: product.btn_txt,
+      order: product.order,
       isUntouched: true,
       nameError: false,
       btnError: false,
@@ -47,6 +49,7 @@ export default class ProductForm extends React.Component<any, any> {
       rsvp_link: "",
       description: "",
       btn_txt: "",
+      order: "",
       isUntouched: true,
       nameError: false,
       imageUrlError: false,
@@ -58,7 +61,7 @@ export default class ProductForm extends React.Component<any, any> {
 
   handleSubmit = () => {
     const newState = { ...this.state } as any;
-    const { name, image_url, rsvp_link, description, btn_txt } = this.state as any;
+    const { name, image_url, rsvp_link, description, btn_txt, order } = this.state as any;
     let isError = false;
     if (!name) {
       isError = true;
@@ -86,7 +89,7 @@ export default class ProductForm extends React.Component<any, any> {
       });
     } else {
       this.setEmptyFormState();
-      const product = { name, image_url, rsvp_link, description, btn_txt };
+      const product = { name, image_url, rsvp_link, description, btn_txt, order };
       if (this.props.product) {
         (product as any)._id = this.props.product._id;
       }
@@ -95,7 +98,7 @@ export default class ProductForm extends React.Component<any, any> {
   }
 
   render() {
-    const { name, image_url, rsvp_link, description, btn_txt, btnError,
+    const { name, image_url, rsvp_link, description, btn_txt, order, btnError,
       nameError, imageUrlError, rsvpError, descriptionError
     } = this.state as any;
     return (
@@ -120,24 +123,34 @@ export default class ProductForm extends React.Component<any, any> {
             error={!this.state.isUntouched && imageUrlError}
           />
         </Form.Group>
-        <Form.Field
-          name={"rsvp_link"}
-          onChange={this.handleInputChange}
-          control={Input}
-          label="RSVP Link"
-          value={rsvp_link}
-          placeholder="RSVP Link"
-          error={!this.state.isUntouched && rsvpError}
-        />
-        <Form.Field
-          name={"btn_txt"}
-          onChange={this.handleInputChange}
-          control={Input}
-          label="Button Text"
-          value={btn_txt}
-          placeholder="Button Text"
-          error={!this.state.isUntouched && btnError}
-        />
+        <Form.Group>
+          <Form.Field
+            name={"rsvp_link"}
+            onChange={this.handleInputChange}
+            control={Input}
+            label="RSVP Link"
+            value={rsvp_link}
+            placeholder="RSVP Link"
+            error={!this.state.isUntouched && rsvpError}
+          />
+          <Form.Field
+            name={"btn_txt"}
+            onChange={this.handleInputChange}
+            control={Input}
+            label="Button Text"
+            value={btn_txt}
+            placeholder="Button Text"
+            error={!this.state.isUntouched && btnError}
+          />
+          <Form.Field
+            onChange={this.handleInputChange}
+            control={Input}
+            label="Order"
+            name={"order"}
+            value={order}
+            placeholder="Order"
+          />
+        </Form.Group>
         <Form.Field
           onChange={this.handleInputChange}
           id="form-textarea-control-description"

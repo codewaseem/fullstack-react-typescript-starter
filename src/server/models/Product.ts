@@ -21,6 +21,10 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  order: {
+    type: Number,
+    default: 1
+  },
   details: {},
   date: Date,
   location: Date
