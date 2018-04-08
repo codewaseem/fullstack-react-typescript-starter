@@ -12,6 +12,9 @@ const validate = (values) => {
     if (!values.summary) {
       errors.summary = "Required";
     }
+    if (!values.imageLink) {
+      errors.imageLink = "Required";
+    }
     if (!values.fullArticleLink) {
       errors.fullArticleLink = "Required";
     }
@@ -34,6 +37,11 @@ class ArticlesForm extends React.Component<any, any> {
         <div>
           <label htmlFor="title" >Title</label>
           <Field name="title" component="input" placeholder="Title" />
+        </div>
+
+        <div>
+          <label htmlFor="imageLink" >Image Link</label>
+          <Field name="imageLink" component="input" placeholder="Image Link" />
         </div>
         <div>
           <label htmlFor="summary" >Summary</label>
@@ -60,6 +68,7 @@ export default reduxForm({
   initialValues: {
     title: "",
     summary: "",
+    imageLink: "",
     date: "",
     fullArticleLink: ""
   }

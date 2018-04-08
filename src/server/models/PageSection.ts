@@ -288,6 +288,10 @@ const NewsArticleSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  imageLink: {
+    type: String,
+    required: true
+  },
   summary: {
     type: String,
     required: true
