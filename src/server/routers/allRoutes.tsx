@@ -42,6 +42,7 @@ app.get("*", (req: express.Request, res: express.Response) => {
       ? `<link rel="stylesheet" href="${assets.client.css}">`
       : ""
     }
+    <style>html,body,#root{height:100%;width:100%}</style>
     <script>window.__INITIAL_DATA__ = ${JSON.stringify(store.getState())}</script>
             ${
     process.env.NODE_ENV === "production"

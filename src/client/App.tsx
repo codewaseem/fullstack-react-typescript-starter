@@ -11,9 +11,9 @@ import "./app.build.css";
 export default class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="bg-black w-full h-full text-white relative">
         <Switch>
-          <Route exact={true} path="/" component={LandingPage} />
+          <Route exact={true} path="/" component={LoginPage} />
           <PrivateRoute path="/admin-panel" component={AdminHome} />
           <Route path="/login" component={LoginPage} />
           <Route path="/admin-login" component={AdminLoginPage} />

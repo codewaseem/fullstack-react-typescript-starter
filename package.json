@@ -5,6 +5,7 @@
   "scripts": {
     "heroku-postbuild": "npm i -g razzle;yarn run build",
     "start": "NODE_ENV=production node build/server.js",
+    "dev": "razzle start",
     "build": "razzle build",
     "test": "razzle test --env=node",
     "start:prod": "NODE_ENV=production node build/server.js"
