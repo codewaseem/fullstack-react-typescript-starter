@@ -17,6 +17,10 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  btn_txt: {
+    type: String,
+    required: true
+  },
   details: {},
   date: Date,
   location: Date
