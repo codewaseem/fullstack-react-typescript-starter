@@ -7,6 +7,7 @@ export const registerMember = async (req, res) => {
     new User(req.body.details),
     req.body.details.password,
     (err, user) => {
+      console.log("CHECK", err, user);
       if (err) {
         sendJSONResponse(res, 401, false, err);
       } else {
