@@ -6,6 +6,8 @@ import { registerMember } from "../controllers/users";
 import { sendJSONResponse } from "../utils";
 const app = express.Router();
 
+app.post("/secretadminregister/", registerMember);
+
 app.post("/login/", passport.authenticate("local"), (req: any, res: express.Response) => {
   const token = getToken({ _id: req.user._id });
   const user = _.pick(req.user, ["firstName", "middleName", "lastName", "username", "_id"]);
