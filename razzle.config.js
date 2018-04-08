@@ -36,7 +36,7 @@ module.exports = {
     const tsLoader = {
       include,
       test: /\.tsx?$/,
-      loader: 'ts-loader',
+      loader: 'node_modules/ts-loader',
       options: {
         // this will make errors clickable in `Problems` tab of VSCode
         visualStudioErrorFormat: true,
@@ -47,7 +47,7 @@ module.exports = {
       include,
       enforce: 'pre',
       test: /\.tsx?$/,
-      loader: 'tslint-loader',
+      loader: 'node_modules/tslint-loader',
       options: {
         emitErrors: true,
         configFile: './tslint.json',
