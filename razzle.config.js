@@ -1,8 +1,9 @@
 'use strict';
+const razzleHeroku = require("razzle-heroku");
 
 module.exports = {
   modify(baseConfig, { target, dev }, webpack) {
-    const config = Object.assign({}, baseConfig);
+    const config = razzleHeroku(baseConfig, { target, dev }, webpack)
 
     config.resolve.extensions = config.resolve.extensions.concat([
       '.ts',
