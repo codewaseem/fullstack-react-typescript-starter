@@ -95,7 +95,8 @@ function postRequestForPageSection(sectionPath: string, details: any) {
 }
 
 export function getEvents() {
-  return axios.get("/events/")
+  setAuthHeaders();
+  return axios.get("/events/allEvents")
     .then(parseData)
     .then(verifyData);
 }

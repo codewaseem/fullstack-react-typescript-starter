@@ -2,7 +2,7 @@ import { Express } from "express";
 import {
   allRoutes, users, products,
   sponsors, testimonials, guests, events,
-  aboutSection, articles, pageSettings
+  aboutSection, articles, pageSettings, mail
 } from "../routers";
 
 export default function setup(app: Express) {
@@ -15,5 +15,6 @@ export default function setup(app: Express) {
   app.use("/articles/", articles);
   app.use("/aboutSection/", aboutSection);
   app.use("/pageSettings/", pageSettings);
+  app.use("/mail/", mail);
   app.use("*", allRoutes);
 }

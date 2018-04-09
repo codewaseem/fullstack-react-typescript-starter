@@ -5,6 +5,7 @@ import {
   removeModelByIdAndRespond
 } from "../utils";
 import { Event } from "../models";
+import { clientAxios as axios } from "../../shared/axios";
 const app = express.Router();
 import cors from "cors";
 
@@ -16,6 +17,7 @@ app.get("/", cors(), async (req: express.Request, res: express.Response) => {
         return {
           privateEvent: true,
           date: (new Date()).toISOString(),
+          _id: event._id,
           // tslint:disable-next-line:max-line-length
           description: "This is private event. This is private event.This is private event.This is private event.This is private event.This is private event.",
           name: "This is private event.This is private event.",
@@ -44,6 +46,19 @@ app.get("/", cors(), async (req: express.Request, res: express.Response) => {
 
 app.use(verifyUser);
 app.use(verifyAdmin);
+
+app.get("/allEvents", async (req: express.Request, res: express.Response) => {
+  try {
+    const events = await Event.find().exec();
+    if (events && events.length >= 0) {
+      sendJSONResponse(res, 200, true, events);
+    } else {
+      sendJSONResponse(res, 404, false, "Something went wrong");
+    }
+  } catch (e) {
+    sendJSONResponse(res, 404, false, "Something went wrong");
+  }
+});
 
 app.post("/add/", (req: express.Request, res: express.Response) => {
   saveModelAndSendResponse(Event, req.body.details, res);
