@@ -45,5 +45,13 @@ export const ArticleViewList = Loadable({
   }
 });
 
+export const UserViewList = Loadable({
+  loader: () => import("./UserViewList"),
+  loading() {
+    return (<Loader />);
+  }
+});
+
+export {default as SubmitButton} from "./SubmitButton";
 export { default as Loader } from "./Loader";
 export { default as PrivateRoute } from "./PrivateRoute";

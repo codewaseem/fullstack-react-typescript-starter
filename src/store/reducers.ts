@@ -8,6 +8,7 @@ import { guestReducer } from "./guests";
 import { sponsorReducer } from "./sponsors";
 import { testimonialReducer } from "./testimonials";
 import { articleReducer } from "./articles";
+import { usersReducer } from "./users";
 
 export const rootReducer = combineReducers({
   auth: userReducer,
@@ -18,5 +19,6 @@ export const rootReducer = combineReducers({
   sponsorsData: sponsorReducer,
   testimonialsData: testimonialReducer,
   articlesData: articleReducer,
+  usersData: usersReducer,
   form: formReducer
 });

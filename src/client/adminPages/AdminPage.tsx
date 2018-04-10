@@ -1,104 +1,70 @@
 import * as React from "react";
 import { Container, Card } from "semantic-ui-react";
-import { Link, Route, Switch } from "react-router-dom";
+import { Link, Route, Switch, withRouter } from "react-router-dom";
 import {
   ManageProductsView, ManageAboutUsView, ManageEventsView,
-  ManageGuestsView, ManageSponsorsView, ManageTestimonialsView, ManageArticlesView
+  ManageGuestsView, ManageSponsorsView, ManageTestimonialsView, ManageArticlesView,
+  ManageUsersView
 } from "./";
 import { EnsureAdmin } from "./EnsureIsAdmin";
 
-class HomePage extends React.Component {
+const adminSections = {
+  "/manage_products": ManageProductsView,
+  "/manage_about_us": ManageAboutUsView,
+  "/manage_events": ManageEventsView,
+  "/manage_guests": ManageGuestsView,
+  "/manage_sponsors": ManageSponsorsView,
+  "/manage_testimonials": ManageTestimonialsView,
+  "/manage_articles": ManageArticlesView,
+  "/manage_users": ManageUsersView
+};
+
+class HomePage extends React.Component<any, any> {
 
   public render() {
     return (
-      <div
-        style={{ width: "80%", margin: "50px auto" }}
-      >
-        <Switch>
-          <Route
-            path="/admin-panel/manage-products"
-            component={ManageProductsView}
-          />
-          <Route
-            path="/admin-panel/manage-about-us"
-            component={ManageAboutUsView}
-          />
-          <Route
-            path="/admin-panel/manage-events"
-            component={ManageEventsView}
-          />
-          <Route
-            path="/admin-panel/manage-guests"
-            component={ManageGuestsView}
-          />
-          <Route
-            path="/admin-panel/manage-sponsors"
-            component={ManageSponsorsView}
-          />
-          <Route
-            path="/admin-panel/manage-testimonials"
-            component={ManageTestimonialsView}
-          />
-          <Route
-            path="/admin-panel/manage-articles"
-            component={ManageArticlesView}
-          />
+      <div className="sm:p-4 h-full relative">
+        <div className="absolute abs-center w-4/5">
+          <Switch>
+            {Object.keys(adminSections).map((key) => {
+              return <Route key={key} path={this.props.match.url + key} component={adminSections[key]} />;
+            })}
 
-          <Route
-            // tslint:disable-next-line:jsx-no-multiline-js
-            render={(props) => {
-              return (
-                <Card.Group>
-                  <Card onClick={() => { props.history.push(`${props.match.url}/manage-products`); }} >
-                    <Card.Content>
-                      <Card.Header>Products</Card.Header>
-                      <Card.Description>Manage products</Card.Description>
-                    </Card.Content>
-                  </Card>
-                  <Card onClick={() => { props.history.push(`${props.match.url}/manage-about-us`); }} >
-                    <Card.Content>
-                      <Card.Header>About Us</Card.Header>
-                      <Card.Description>Change about us section</Card.Description>
-                    </Card.Content>
-                  </Card>
-                  <Card onClick={() => { props.history.push(`${props.match.url}/manage-guests`); }} >
-                    <Card.Content>
-                      <Card.Header>Guests</Card.Header>
-                      <Card.Description>Manage driven society guests</Card.Description>
-                    </Card.Content>
-                  </Card>
-                  <Card onClick={() => { props.history.push(`${props.match.url}/manage-events`); }}>
-                    <Card.Content>
-                      <Card.Header>Events</Card.Header>
-                      <Card.Description>Manage calendapanelr events</Card.Description>
-                    </Card.Content>
-                  </Card>
-                  <Card onClick={() => { props.history.push(`${props.match.url}/manage-sponsors`); }}>
-                    <Card.Content>
-                      <Card.Header>Sponsors</Card.Header>
-                      <Card.Description>Manage driven society sponsors.</Card.Description>
-                    </Card.Content>
-                  </Card>
-                  <Card onClick={() => { props.history.push(`${props.match.url}/manage-testimonials`); }}>
-                    <Card.Content>
-                      <Card.Header>Testimonials</Card.Header>
-                      <Card.Description>Manage driven society sponsors</Card.Description>
-                    </Card.Content>
-                  </Card>
-                  <Card onClick={() => { props.history.push(`${props.match.url}/manage-articles`); }}>
-                    <Card.Content>
-                      <Card.Header>News</Card.Header>
-                      <Card.Description>Manage driven society news</Card.Description>
-                    </Card.Content>
-                  </Card>
-                </Card.Group>
-              );
-            }}
-          />
-        </Switch>
+            <Route
+              // tslint:disable-next-line:jsx-no-multiline-js
+              component={AdminItems}
+            />
+          </Switch>
+        </div>
       </div>
     );
   }
 }
 
-export default EnsureAdmin(HomePage);
+const AdminItems = ({ match, history }) => {
+  return (
+    <div className="flex flex-wrap">
+      {Object.keys(adminSections).map((key) => {
+        return (
+          <div
+            key={key}
+            className=" group w-full h-32 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 cursor-pointer m-2 "
+            onClick={() => history.push(match.url + key)}
+          >
+
+            {/*tslint:disable-next-line:max-line-length*/}
+            <div className="h-full group-hover:bg-black border-2 border-white bg-white p-4 flex flex-col justify-between leading-normal">
+              <div className="group mb-8">
+                {/*tslint:disable-next-line:max-line-length */}
+                <div className="text-black group-hover:text-white  font-bold text-xl break-words mb-2">{key.slice(1).toUpperCase().split("_").join(" ")}</div>
+
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default EnsureAdmin(withRouter(HomePage));

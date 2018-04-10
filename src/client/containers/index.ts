@@ -7,3 +7,4 @@ export { default as GuestsContainer } from "./GuestListContainer";
 export { default as SponsorsContainer } from "./SponsorListContainer";
 export { default as TestimonialsContainer } from "./TestimonialsContainer";
 export { default as ArticlesContainer } from "./ArticleListContainer";
+export { default as UsersContainer } from "./UsersContainer";

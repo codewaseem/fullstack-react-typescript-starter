@@ -8,8 +8,6 @@ import { getAuthData } from "./client/utils";
 import { getAboutUsThunk } from "./store/aboutus";
 // tslint:disable-next-line:max-line-length
 
-import "semantic-ui-css/semantic.min.css";
-
 let data;
 if ((window as any).__INITIAL_DATA__) {
   data = (window as any).__INITIAL_DATA__;

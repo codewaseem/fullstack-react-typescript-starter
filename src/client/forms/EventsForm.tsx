@@ -17,6 +17,9 @@ const validate = (values) => {
     if (!values.description) {
       errors.description = "Required";
     }
+    if (!values.imageLink) {
+      errors.imageLink = "Required";
+    }
     if (!values.date) {
       errors.date = "Required";
     }
@@ -61,6 +64,10 @@ class EventsForm extends React.Component<any, any> {
         <div>
           <label htmlFor="privateEvent" >Private? </label>
           <Field name="privateEvent" component="input" type="checkbox" />
+        </div>
+        <div>
+          <label htmlFor="imageLink" >Image Link</label>
+          <Field name="imageLink" component="input" placeholder="Event Image Link" />
         </div>
         <div>
           <label htmlFor="description" >Description</label>
@@ -120,6 +127,7 @@ export default reduxForm({
   initialValues: {
     name: "",
     description: "",
+    imageLink: "",
     privateEvent: true,
     fieldOne: {
       heading: "",

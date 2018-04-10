@@ -234,3 +234,31 @@ export function deleteArticle(id: string) {
     id
   }).then(parseData).then(verifyData);
 }
+
+export function getUsers() {
+  return axios.get("/users/")
+    .then(parseData)
+    .then(verifyData);
+}
+
+export function addUser(details: any) {
+  setAuthHeaders();
+  return axios.post("/users/add", {
+    details
+  }).then(parseData).then(verifyData);
+}
+
+export function updateUser(id: any, details: any) {
+  setAuthHeaders();
+  return axios.post("/users/update", {
+    id,
+    details
+  }).then(parseData).then(verifyData);
+}
+
+export function deleteUser(id: string) {
+  setAuthHeaders();
+  return axios.post("/users/delete/", {
+    id
+  }).then(parseData).then(verifyData);
+}

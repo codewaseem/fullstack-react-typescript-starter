@@ -171,6 +171,10 @@ const EventSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  imageLink: {
+    type: String,
+    required: true
+  },
   privateEvent: {
     type: Boolean,
     default: false

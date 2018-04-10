@@ -57,3 +57,10 @@ export const ManageArticlesView = Loadable({
     return <Loader />;
   }
 });
+
+export const ManageUsersView = Loadable({
+  loader: () => import("./ManageUsers"),
+  loading() {
+    return <Loader />;
+  }
+});
