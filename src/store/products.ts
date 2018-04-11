@@ -28,6 +28,7 @@ export const getProductsThunk = () => {
       })
       .catch((e) => {
         dispatch(getProductsFailed("FAILED TO GET PRODUCT"));
+        throw e;
       });
   };
 };
@@ -41,6 +42,7 @@ export const addProductThunk = (details) => {
       })
       .catch((e) => {
         dispatch(getProductsFailed("FAILED TO ADD THE PRODUCT"));
+        throw e;
       });
   };
 };
@@ -54,6 +56,7 @@ export const updateProductThunk = (id, details) => {
       })
       .catch((e) => {
         dispatch(getProductsFailed("FAILED TO UPDATE THE PRODUCT"));
+        throw e;
       });
   };
 };
@@ -67,6 +70,7 @@ export const deleteProductThunk = (id) => {
       })
       .catch((e) => {
         dispatch(getProductsFailed("FAILED TO DELETE THE PRODUCT"));
+        throw e;
       });
   };
 };

@@ -8,3 +8,5 @@ export { default as SponsorsContainer } from "./SponsorListContainer";
 export { default as TestimonialsContainer } from "./TestimonialsContainer";
 export { default as ArticlesContainer } from "./ArticleListContainer";
 export { default as UsersContainer } from "./UsersContainer";
+
+export { default as crudViewMaker } from "./crudViewMaker";

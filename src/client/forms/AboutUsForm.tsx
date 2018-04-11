@@ -48,8 +48,12 @@ const validate = (values) => {
 };
 
 class AboutUsForm extends React.Component<any, any> {
-
+  componentDidMount() {
+    this.props.initialize(this.props.initialValues);
+  }
+  
   render() {
+    console.log(this.props.initialValues);
     const { handleSubmit, pristine, submitting, valid } = this.props;
     return (
       <form onSubmit={handleSubmit} >
