@@ -54,19 +54,17 @@ class HomePage extends React.Component<any, any> {
   public render() {
     return (
       <div className="sm:p-4 h-full relative">
-        <div className="p-4">
-          <Switch>
-            <Route path={this.props.match.url + "/crud"} component={MyComponent} />
-            {Object.keys(adminSections).map((key) => {
-              return <Route key={key} path={this.props.match.url + key} component={adminSections[key].component} />;
-            })}
+        <Switch>
+          <Route path={this.props.match.url + "/crud"} component={MyComponent} />
+          {Object.keys(adminSections).map((key) => {
+            return <Route key={key} path={this.props.match.url + key} component={adminSections[key].component} />;
+          })}
 
-            <Route
-              // tslint:disable-next-line:jsx-no-multiline-js
-              component={AdminItems}
-            />
-          </Switch>
-        </div>
+          <Route
+            // tslint:disable-next-line:jsx-no-multiline-js
+            component={AdminItems}
+          />
+        </Switch>
       </div>
     );
   }

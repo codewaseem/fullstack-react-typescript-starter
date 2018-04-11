@@ -105,7 +105,7 @@ export default function crudViewMaker({
               </div>
             </Modal>
           </div>
-          <div className="flex">
+          <div className="flex flex-wrap">
             <div className="w-full md:w-2/3 p-2">
               <ViewComponent
                 itemList={this.props.itemList}
@@ -115,7 +115,12 @@ export default function crudViewMaker({
                 onDeleteClick={this.handleDeleteClick}
               />
             </div>
-            <div className="w-full text-white md:w-1/3 p-2 bg-black rounded-lg">
+            <div
+              className="w-full text-white md:w-1/3 p-2 bg-black rounded-lg"
+              style={{
+                height: "fit-content"
+              }}
+            >
               <AddForm onSubmit={this.handleAddFormSubmit} />
             </div>
           </div>

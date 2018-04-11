@@ -6,9 +6,9 @@ export default class ProductViewList extends React.Component<any, any> {
   render() {
     const { products } = this.props;
     return (
-      <div className="w-full text-black">
+      <div className="w-full text-center text-black">
         <h2>Products</h2>
-        <div className="flex flex-wrap">
+        <div className="flex justify-center flex-wrap">
           {products && products.length > 0 ?
             products.map((product) => {
               return <ProductView
