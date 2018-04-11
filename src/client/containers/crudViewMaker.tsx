@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+import Modal from "react-responsive-modal";
 
 export default function crudViewMaker({
   viewComponent: ViewComponent,
@@ -47,6 +48,15 @@ export default function crudViewMaker({
       });
     }
 
+    unsetEditState = () => {
+      this.setState(() => {
+        return {
+          isEditing: false,
+          selectedItem: null
+        };
+      });
+    }
+
     componentDidMount() {
       (this.props.get() || Promise.resolve())
         .then(() => this.setLoadingState())
@@ -55,7 +65,6 @@ export default function crudViewMaker({
 
     handleEditClick = (id) => {
       this.setEditState(id);
-      this.props.history.push(this.props.match.url + "/edit");
     }
     handleAddFormSubmit = (details) => {
       this.props.add(details).then(console.log).catch(() => { console.log("Add error"); });
@@ -63,13 +72,13 @@ export default function crudViewMaker({
 
     handleUpdateFormSubmit = (details) => {
       this.props.update(details._id, details).then(() => {
-        this.props.history.goBack();
+        this.unsetEditState();
       }).catch(console.log);
     }
 
     handleDeleteClick = (id) => {
       confirmAlert({
-        title: "Confirm to submit",
+        title: "Confirm DeleteI",
         message: "Are you sure to do this.",
         buttons: [
           {
@@ -86,46 +95,31 @@ export default function crudViewMaker({
 
     render() {
       const { match, history } = this.props;
+      const { isEditing } = this.state;
       return (
         <div>
-          <Switch>
-            <Route
-              path={match.url + "/edit"}
-              render={() => {
-                if (this.state.selectedItem) {
-                  return (
-                    <div>
-                      <EditForm initialValues={this.state.selectedItem} onSubmit={this.handleUpdateFormSubmit} />
-                    </div>
-                  );
-                } else {
-                  return <Redirect to={match.url} />;
-                }
-              }}
-            />
-            <Route
-              render={() => {
-                return (
-                  <div className="flex">
-                    <div className="w-full sm:w-1/2 p-2">
-                      <ViewComponent
-                        itemList={this.props.itemList}
-                        onEditClick={this.handleEditClick}
-                        onAddFormSubmit={this.handleAddFormSubmit}
-                        onUpdateFormSubmit={this.handleUpdateFormSubmit}
-                        onDeleteClick={this.handleDeleteClick}
-                      />
-                    </div>
-                    <div className="w-full sm:w-1/2 p-2 bg-black rounded-lg">
-                      <AddForm onSubmit={this.handleAddFormSubmit} />
-                    </div>
-                  </div>
-                );
-              }}
-            />
-
-          </Switch>
-        </div>
+          <div>
+            <Modal open={isEditing} onClose={this.unsetEditState} little={true}>
+              <div>
+                <EditForm initialValues={this.state.selectedItem} onSubmit={this.handleUpdateFormSubmit} />
+              </div>
+            </Modal>
+          </div>
+          <div className="flex">
+            <div className="w-full md:w-2/3 p-2">
+              <ViewComponent
+                itemList={this.props.itemList}
+                onEditClick={this.handleEditClick}
+                onAddFormSubmit={this.handleAddFormSubmit}
+                onUpdateFormSubmit={this.handleUpdateFormSubmit}
+                onDeleteClick={this.handleDeleteClick}
+              />
+            </div>
+            <div className="w-full text-white md:w-1/3 p-2 bg-black rounded-lg">
+              <AddForm onSubmit={this.handleAddFormSubmit} />
+            </div>
+          </div>
+        </div >
       );
     }
 

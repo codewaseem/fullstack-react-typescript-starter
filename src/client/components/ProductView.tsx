@@ -2,29 +2,29 @@ import * as React from "react";
 
 export default class ProductView extends React.Component<any, any> {
   render() {
-    const { image_url, name, description, rsvp_link, _id: id } = this.props.product;
+    const { imageLink, name, description, rsvpLink, _id: id } = this.props.product;
     const { onEditClick, onDeleteClick } = this.props;
     return (
-      <div className="w-full lg:w-1/2 p-1 ">
+      <div className="w-full sm:max-w-xs p-1 ">
         <div className="bg-black text-white rounded overflow-hidden shadow-lg">
-          <img className="w-full h-32" src={image_url} alt="Sunset in the mountains" />
+          <img className="w-full h-54" src={imageLink} alt="Sunset in the mountains" />
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2">{name}</div>
             <p className="text-grey-darker text-base">
               {description.slice(0, 100)}...
-          </p>
-            <div className="w-full">
+            </p>
+            <div className="w-full px-2 text-center mt-8">
               <button
                 onClick={() => { onEditClick(id); }}
                 // tslint:disable-next-line:max-line-length
-                className="bg-blue-lighter hover:bg-blue text-grey-darkest font-semibold py-2 px-4 rounded shadow mr-2"
+                className="bg-blue hover:bg-blue-dark w-1/3 text-white font-semibold py-2 px-4 rounded shadow mr-2"
               >
                 Edit
               </button>
               <button
                 onClick={() => { onDeleteClick(id); }}
                 // tslint:disable-next-line:max-line-length
-                className="bg-red-darkest hover:bg-blue text-white font-semibold py-2 px-4 rounded shadow mr-2"
+                className="bg-red-dark w-1/3 hover:bg-red-darker text-white font-semibold py-2 px-4 rounded shadow mr-2"
               >
                 Delete
               </button>
