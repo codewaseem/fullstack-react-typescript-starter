@@ -1,87 +1,22 @@
+import { crudViewMaker } from "../containers";
+import { getSponsorsThunk, updateSponsorThunk, deleteSponsorThunk, addSponsorThunk } from "../../store/sponsors";
+import { SponsorViewList } from "../components";
 import * as React from "react";
-import SponsorsForm from "../forms/SponsorsForm";
-import { SponsorsContainer } from "../containers";
-import { Route, Switch, withRouter } from "react-router-dom";
-import { addSponsorThunk, updateSponsorThunk, deleteSponsorThunk, getSponsorsThunk } from "../../store/sponsors";
-import { connect } from "react-redux";
+import SponsorForm from "../forms/SponsorsForm";
 
-class ManageSponsorsPage extends React.Component<any, any> {
-
-  state = {
-    selectedSponsor: null,
-    isEditing: false,
-    isDeleting: false
-  };
-  handleEditClick = (id) => {
-    this.setState(() => ({ selectedSponsor: this.props.sponsorsMap[id] }));
-    this.props.history.push(this.props.match.url + "/edit");
+const MyComponent = crudViewMaker({
+  // tslint:disable-next-line:max-line-length
+  viewComponent: ({ itemList, ...props }) => <SponsorViewList sponsors={itemList} {...props} />,
+  extractListFromStore: (store) => store.sponsorsData.sponsorsList,
+  extractMapFromStore: (store) => store.sponsorsData.sponsorsMap,
+  addFormComponent: SponsorForm,
+  editFormComponent: SponsorForm,
+  crudThunks: {
+    get: getSponsorsThunk,
+    add: addSponsorThunk,
+    update: updateSponsorThunk,
+    delete: deleteSponsorThunk
   }
+});
 
-  handleUpdate = (sponsor) => {
-    this.props.updateSponsor(sponsor._id, sponsor).then(() => {
-      this.props.history.goBack();
-    });
-  }
-
-  handleDeleteClick = (id) => {
-    this.props.deleteSponsor(id);
-  }
-
-  render() {
-    const { history, match } = this.props;
-    return (
-      <Switch>
-        <Route
-          path={match.url}
-          exact={true}
-          render={() => {
-            return (<div>
-              <h2>All Sponsors</h2>
-              <SponsorsContainer handleEditClick={this.handleEditClick} handleDeleteClick={this.handleDeleteClick} />
-              <hr />
-              <h2>Add Sponsor</h2>
-              <SponsorsForm
-                onSubmit={this.props.addSponsor}
-              />
-            </div>);
-          }}
-        />
-        <Route
-          path={match.url + "/edit"}
-          exact={true}
-          render={() => {
-            console.log(this.state.selectedSponsor);
-            // tslint:disable-next-line:max-line-length
-            return this.state.selectedSponsor && <SponsorsForm initialValues={this.state.selectedSponsor} onSubmit={this.handleUpdate} />;
-          }}
-        />
-      </Switch>
-    );
-  }
-}
-
-const mapStateToProps = ({ sponsorsData }) => {
-  return {
-    sponsorsList: sponsorsData.sponsorsList,
-    sponsorsMap: sponsorsData.sponsorsMap
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getSponsors() {
-      dispatch(getSponsorsThunk());
-    },
-    addSponsor(details: any) {
-      return dispatch(addSponsorThunk(details));
-    },
-    updateSponsor(id: any, details: any) {
-      return dispatch(updateSponsorThunk(id, details));
-    },
-    deleteSponsor(id: any) {
-      return dispatch(deleteSponsorThunk(id));
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ManageSponsorsPage));
+export default MyComponent;

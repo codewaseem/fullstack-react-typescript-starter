@@ -5,6 +5,7 @@ import ArticleSchema from "../../schemaConfigs/articleSchema";
 import TestimonialSchemaConfig from "../../schemaConfigs/testimonialSchema";
 import GuestSchemaConfig from "../../schemaConfigs/guestSchema";
 import EventSchemaConfig from "../../schemaConfigs/eventSchema";
+import SponsorSchemaConfig from "../../schemaConfigs/sponsorSchema";
 
 const PageSettingSchema = new mongoose.Schema({
   pageTitle: {
@@ -139,16 +140,7 @@ export const Guest = mongoose.model("Guest", GuestSchema);
 const TestimonialSchema = new mongoose.Schema(buildDbSchemaFromConfig(TestimonialSchemaConfig));
 export const Testimonial = mongoose.model("Testimonial", TestimonialSchema);
 
-const SponsorSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  imageLink: {
-    type: String,
-    required: true
-  }
-});
+const SponsorSchema = new mongoose.Schema(buildDbSchemaFromConfig(SponsorSchemaConfig));
 export const Sponsor = mongoose.model("Sponsor", SponsorSchema);
 
 const NewsArticleSchema = new mongoose.Schema(buildDbSchemaFromConfig(ArticleSchema));

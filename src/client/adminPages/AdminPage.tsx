@@ -35,6 +35,11 @@ const adminSections = {
     name: "Articles Preview",
     description: "Manage content displayed on 5Senses section."
   },
+  "/manage_sponsors": {
+    component: ManageSponsorsView,
+    name: "Sponsors",
+    description: "Manage sponsors of driven society."
+  },
   "/manage_users": {
     component: ManageUsersView,
     name: "Members",

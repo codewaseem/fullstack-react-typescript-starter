@@ -5,7 +5,7 @@ export const {
   getGuestsPending,
   getGuestsSuccess,
   getGuestsFailed,
-  updateGuestsSuccess,
+  updateGuestSuccess,
   addGuestSuccess,
   deleteGuestSuccess,
 } = createActions({
@@ -48,7 +48,7 @@ export const updateGuestThunk = (id, details) => {
     dispatch(getGuestsPending());
     return updateGuest(id, details)
       .then((updatedGuest) => {
-        dispatch(updateGuestsSuccess(updatedGuest));
+        dispatch(updateGuestSuccess(updatedGuest));
       })
       .catch((e) => {
         dispatch(getGuestsFailed("FAILED TO UPDATE THE GUEST"));
@@ -117,7 +117,7 @@ export const guestReducer = handleActions(
         requestFailed: false
       };
     },
-    [updateGuestsSuccess](state: any, { payload: { updatedGuest } }: any) {
+    [updateGuestSuccess](state: any, { payload: { updatedGuest } }: any) {
       // tslint:disable-next-line:triple-equals
       return {
         ...state,

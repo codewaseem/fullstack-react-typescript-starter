@@ -5,7 +5,7 @@ export const {
   getUsersPending,
   getUsersSuccess,
   getUsersFailed,
-  updateUsersSuccess,
+  updateUserSuccess,
   addUserSuccess,
   deleteUserSuccess,
 } = createActions({
@@ -48,7 +48,7 @@ export const updateUserThunk = (id, details) => {
     dispatch(getUsersPending());
     return updateUser(id, details)
       .then((updatedUser) => {
-        dispatch(updateUsersSuccess(updatedUser));
+        dispatch(updateUserSuccess(updatedUser));
       })
       .catch((e) => {
         dispatch(getUsersFailed("FAILED TO UPDATE THE USER"));
@@ -117,7 +117,7 @@ export const usersReducer = handleActions(
         requestFailed: false
       };
     },
-    [updateUsersSuccess](state: any, { payload: { updatedUser } }: any) {
+    [updateUserSuccess](state: any, { payload: { updatedUser } }: any) {
       // tslint:disable-next-line:triple-equals
       return {
         ...state,

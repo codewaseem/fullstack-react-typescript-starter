@@ -5,7 +5,7 @@ export const {
   getSponsorsPending,
   getSponsorsSuccess,
   getSponsorsFailed,
-  updateSponsorsSuccess,
+  updateSponsorSuccess,
   addSponsorSuccess,
   deleteSponsorSuccess,
 } = createActions({
@@ -48,7 +48,7 @@ export const updateSponsorThunk = (id, details) => {
     dispatch(getSponsorsPending());
     return updateSponsor(id, details)
       .then((updatedSponsor) => {
-        dispatch(updateSponsorsSuccess(updatedSponsor));
+        dispatch(updateSponsorSuccess(updatedSponsor));
       })
       .catch((e) => {
         dispatch(getSponsorsFailed("FAILED TO UPDATE THE SPONSOR"));
@@ -117,11 +117,12 @@ export const sponsorReducer = handleActions(
         requestFailed: false
       };
     },
-    [updateSponsorsSuccess](state: any, { payload: { updatedSponsor } }: any) {
+    [updateSponsorSuccess](state: any, { payload: { updatedSponsor } }: any) {
       // tslint:disable-next-line:triple-equals
       return {
         ...state,
         sponsorsList: _.map(state.sponsorsList, (obj) => {
+          console.log(updatedSponsor, obj);
           // tslint:disable-next-line:triple-equals
           if (obj._id == updatedSponsor._id) {
             return updatedSponsor;

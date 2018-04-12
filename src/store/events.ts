@@ -5,7 +5,7 @@ export const {
   getEventsPending,
   getEventsSuccess,
   getEventsFailed,
-  updateEventsSuccess,
+  updateEventSuccess,
   addEventSuccess,
   deleteEventSuccess,
 } = createActions({
@@ -48,7 +48,7 @@ export const updateEventThunk = (id, details) => {
     dispatch(getEventsPending());
     return updateEvent(id, details)
       .then((updatedEvent) => {
-        dispatch(updateEventsSuccess(updatedEvent));
+        dispatch(updateEventSuccess(updatedEvent));
       })
       .catch((e) => {
         dispatch(getEventsFailed("FAILED TO UPDATE THE EVENT"));
@@ -117,7 +117,7 @@ export const eventReducer = handleActions(
         requestFailed: false
       };
     },
-    [updateEventsSuccess](state: any, { payload: { updatedEvent } }: any) {
+    [updateEventSuccess](state: any, { payload: { updatedEvent } }: any) {
       // tslint:disable-next-line:triple-equals
       return {
         ...state,

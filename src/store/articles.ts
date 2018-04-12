@@ -5,7 +5,7 @@ export const {
   getArticlesPending,
   getArticlesSuccess,
   getArticlesFailed,
-  updateArticlesSuccess,
+  updateArticleSuccess,
   addArticleSuccess,
   deleteArticleSuccess,
 } = createActions({
@@ -48,7 +48,7 @@ export const updateArticleThunk = (id, details) => {
     dispatch(getArticlesPending());
     return updateArticle(id, details)
       .then((updatedArticle) => {
-        dispatch(updateArticlesSuccess(updatedArticle));
+        dispatch(updateArticleSuccess(updatedArticle));
       })
       .catch((e) => {
         dispatch(getArticlesFailed("FAILED TO UPDATE THE ARTICLE"));
@@ -117,7 +117,7 @@ export const articleReducer = handleActions(
         requestFailed: false
       };
     },
-    [updateArticlesSuccess](state: any, { payload: { updatedArticle } }: any) {
+    [updateArticleSuccess](state: any, { payload: { updatedArticle } }: any) {
       // tslint:disable-next-line:triple-equals
       return {
         ...state,

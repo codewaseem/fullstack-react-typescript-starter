@@ -12,8 +12,8 @@ export default class SponsorViewList extends React.Component<any, any> {
             return <SponsorView
               key={sponsor._id}
               sponsor={sponsor}
-              handleEditClick={this.props.handleEditClick}
-              handleDeleteClick={this.props.handleDeleteClick}
+              onEditClick={this.props.onEditClick}
+              onDeleteClick={this.props.onDeleteClick}
             />;
           })
         }

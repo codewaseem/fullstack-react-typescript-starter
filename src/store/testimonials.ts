@@ -5,7 +5,7 @@ export const {
   getTestimonialsPending,
   getTestimonialsSuccess,
   getTestimonialsFailed,
-  updateTestimonialsSuccess,
+  updateTestimonialSuccess,
   addTestimonialSuccess,
   deleteTestimonialSuccess,
 } = createActions({
@@ -48,7 +48,7 @@ export const updateTestimonialThunk = (id, details) => {
     dispatch(getTestimonialsPending());
     return updateTestimonial(id, details)
       .then((updatedTestimonial) => {
-        dispatch(updateTestimonialsSuccess(updatedTestimonial));
+        dispatch(updateTestimonialSuccess(updatedTestimonial));
       })
       .catch((e) => {
         dispatch(getTestimonialsFailed("FAILED TO UPDATE THE TESTIMONIAL"));
@@ -117,7 +117,7 @@ export const testimonialReducer = handleActions(
         requestFailed: false
       };
     },
-    [updateTestimonialsSuccess](state: any, { payload: { updatedTestimonial } }: any) {
+    [updateTestimonialSuccess](state: any, { payload: { updatedTestimonial } }: any) {
       // tslint:disable-next-line:triple-equals
       return {
         ...state,
