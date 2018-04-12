@@ -12,7 +12,7 @@ import "./app.build.css";
 export default class App extends React.Component {
   render() {
     return (
-      <div className=" w-full h-full relative">
+      <div className=" w-full min-h-screen bg-black relative">
         <Switch>
           <Route exact={true} path="/" component={LoginPage} />
           <PrivateRoute path="/admin-panel" component={AdminHome} />
