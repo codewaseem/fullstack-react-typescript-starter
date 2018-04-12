@@ -21,19 +21,14 @@ app.get("/", cors(), async (req: express.Request, res: express.Response) => {
           // tslint:disable-next-line:max-line-length
           description: "This is private event. This is private event.This is private event.This is private event.This is private event.This is private event.",
           name: "This is private event.This is private event.",
-          rsvp_link: "#",
-          fieldOne: {
-            heading: "Private Heading",
-            text: "Private text"
-          },
-          fieldTwo: {
-            heading: "Private Heading",
-            text: "Private text"
-          },
-          fieldThree: {
-            heading: "Private Heading",
-            text: "Private text"
-          }
+          btnLink: "#",
+          btnText: "Login to see",
+          heading1: "Private Heading",
+          text1: "Private text",
+          heading2: "Private Heading",
+          text2: "Private text",
+          heading3: "Private Heading",
+          text3: "Private text"
         };
       }
       return event;
