@@ -1,6 +1,10 @@
 import mongoose from "./mongoose";
 import { buildDbSchemaFromConfig } from "./utils";
 import AboutUsSchema from "../../schemaConfigs/aboutUsSection";
+import ArticleSchema from "../../schemaConfigs/articleSchema";
+import TestimonialSchemaConfig from "../../schemaConfigs/testimonialSchema";
+import GuestSchemaConfig from "../../schemaConfigs/guestSchema";
+import EventSchemaConfig from "../../schemaConfigs/eventSchema";
 
 const PageSettingSchema = new mongoose.Schema({
   pageTitle: {
@@ -124,108 +128,15 @@ const AboutSectionSchema = new mongoose.Schema(buildDbSchemaFromConfig(AboutUsSc
 
 export const AboutSection = mongoose.model("AboutSection", AboutSectionSchema);
 
-const EventSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  imageLink: {
-    type: String,
-    required: true
-  },
-  privateEvent: {
-    type: Boolean,
-    default: false
-  },
-  description: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    required: true
-  },
-  rsvp_link: {
-    type: String,
-    required: true
-  },
-  fieldOne: {
-    heading: {
-      type: String,
-      required: true
-    },
-    text: {
-      type: String,
-      required: true
-    }
-  },
-  fieldTwo: {
-    heading: {
-      type: String,
-      required: true
-    },
-    text: {
-      type: String,
-      required: true
-    }
-  },
-  fieldThree: {
-    heading: {
-      type: String,
-      required: true
-    },
-    text: {
-      type: String,
-      required: true
-    }
-  }
-});
+const EventSchema = new mongoose.Schema(buildDbSchemaFromConfig(EventSchemaConfig));
 
 export const Event = mongoose.model("Event", EventSchema);
 
-const GuestSchema = new mongoose.Schema({
-  imageLink: {
-    type: String,
-    required: true
-  },
-  jobTitle: {
-    type: String,
-    required: true
-  },
-  name: {
-    type: String,
-    required: true
-  },
-  description: {
-    type: String,
-    required: true
-  },
-  socialLinks: {
-    facebook: String,
-    twitter: String,
-    instagram: String,
-    linkedIn: String,
-    google: String
-  }
-});
+const GuestSchema = new mongoose.Schema(buildDbSchemaFromConfig(GuestSchemaConfig));
 
 export const Guest = mongoose.model("Guest", GuestSchema);
 
-const TestimonialSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  testimonial: {
-    type: String,
-    required: true
-  },
-  imageLink: {
-    type: String,
-    required: true
-  }
-});
-
+const TestimonialSchema = new mongoose.Schema(buildDbSchemaFromConfig(TestimonialSchemaConfig));
 export const Testimonial = mongoose.model("Testimonial", TestimonialSchema);
 
 const SponsorSchema = new mongoose.Schema({
@@ -238,30 +149,8 @@ const SponsorSchema = new mongoose.Schema({
     required: true
   }
 });
-
 export const Sponsor = mongoose.model("Sponsor", SponsorSchema);
 
-const NewsArticleSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    required: true,
-  },
-  imageLink: {
-    type: String,
-    required: true
-  },
-  summary: {
-    type: String,
-    required: true
-  },
-  fullArticleLink: {
-    type: String,
-    required: true
-  }
-});
+const NewsArticleSchema = new mongoose.Schema(buildDbSchemaFromConfig(ArticleSchema));
 
 export const Article = mongoose.model("Article", NewsArticleSchema);

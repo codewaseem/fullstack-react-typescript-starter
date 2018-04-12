@@ -15,7 +15,7 @@
     "jsx-no-multiline-js": false,
     "jsx-wrap-multiline": true,
     "label-position": true,
-    "max-line-length": [true, 120],
+    "max-line-length": [false, 120],
     "ordered-imports" : false,
     "object-literal-sort-keys":false,
     "member-access":false,

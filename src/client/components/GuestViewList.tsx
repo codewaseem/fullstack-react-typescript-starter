@@ -8,14 +8,17 @@ export default class GuestViewList extends React.Component<any, any> {
     return (
       <div>
         {
-          guests.map((guest) => {
-            return <GuestView
-              key={guest._id}
-              guest={guest}
-              handleEditClick={this.props.handleEditClick}
-              handleDeleteClick={this.props.handleDeleteClick}
-            />;
-          })
+          guests && guests.length > 0 ?
+            guests.map((guest) => {
+              return <GuestView
+                key={guest._id}
+                guest={guest}
+                onEditClick={this.props.onEditClick}
+                onDeleteClick={this.props.onDeleteClick}
+              />;
+            })
+            :
+            <h4 className="m-4">No Guests/Community Members</h4>
         }
       </div>
     );

@@ -78,7 +78,7 @@ export default function crudViewMaker({
 
     handleDeleteClick = (id) => {
       confirmAlert({
-        title: "Confirm DeleteI",
+        title: "Confirm Delete",
         message: "Are you sure to do this.",
         buttons: [
           {

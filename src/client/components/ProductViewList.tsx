@@ -8,7 +8,7 @@ export default class ProductViewList extends React.Component<any, any> {
     return (
       <div className="w-full text-center text-black">
         <h2>Products</h2>
-        <div className="flex justify-center flex-wrap">
+        <div className="flex flex-wrap">
           {products && products.length > 0 ?
             products.map((product) => {
               return <ProductView

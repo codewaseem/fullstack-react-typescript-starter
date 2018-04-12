@@ -2,36 +2,33 @@ import * as React from "react";
 
 export default class ArticleView extends React.Component<any, any> {
   render() {
-    const { image_url, name, description, rsvp_link, _id: id, date, privateArticle } = this.props.article;
-    const { handleEditClick, handleDeleteClick } = this.props;
+    const { imageLink, topLine, middleLine, lastLine, btnText, btnLink, _id: id } = this.props.article;
+    const { onEditClick, onDeleteClick } = this.props;
     return (
-      <div>
-        <div><img src={image_url} /></div>
-        <div>
-          <div>
-            <h5>Name</h5>
-            <span>{name}</span>
-          </div>
-          <div>
-            <h5>Description</h5>
-            <span>{description}</span>
-          </div>
-          <div>
-            <h5>RSVP Link</h5>
-            <span>{rsvp_link}</span>
-          </div>
-          <div>
-            <h5>Date</h5>
-            <span>{(new Date(date).toLocaleDateString())}</span>
-          </div>
-          <div>
-            <h5>Private Article</h5>
-            <span>{privateArticle}</span>
-          </div>
+      <div className="max-w-md w-full bg-black text-white flex p-2 rounded-lg shadow border-2 border-black mb-2">
+        <div className="h-32 w-48">
+          <img className="h-full w-full" src={imageLink} />
         </div>
-        <div>
-          <span onClick={() => { handleEditClick(id); }}>Edit</span>
-          <span onClick={() => { handleDeleteClick(id); }}>Delete</span>
+        <div className="flex-auto p-2">
+          <h4>Top Line : {topLine}</h4>
+          <h2>Middle Line : {middleLine}</h2>
+          <p>Last Line : {lastLine}</p>
+          <p>Button Text : {btnText}</p>
+          <p>Links to : {btnLink}</p>
+          <button
+            onClick={() => { onEditClick(id); }}
+            // tslint:disable-next-line:max-line-length
+            className="bg-blue hover:bg-blue-dark w-1/3 text-white font-semibold py-2 px-4 rounded shadow mr-2"
+          >
+            Edit
+          </button>
+          <button
+            onClick={() => { onDeleteClick(id); }}
+            // tslint:disable-next-line:max-line-length
+            className="bg-red-dark w-1/3 hover:bg-red-darker text-white font-semibold py-2 px-4 rounded shadow mr-2"
+          >
+            Delete
+          </button>
         </div>
       </div>
     );

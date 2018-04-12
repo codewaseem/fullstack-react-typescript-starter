@@ -12,8 +12,8 @@ export default class TestimonialViewList extends React.Component<any, any> {
             return <TestimonialView
               key={testimonial._id}
               testimonial={testimonial}
-              handleEditClick={this.props.handleEditClick}
-              handleDeleteClick={this.props.handleDeleteClick}
+              onEditClick={this.props.onEditClick}
+              onDeleteClick={this.props.onDeleteClick}
             />;
           })
         }

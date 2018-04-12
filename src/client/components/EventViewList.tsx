@@ -8,14 +8,17 @@ export default class EventViewList extends React.Component<any, any> {
     return (
       <div>
         {
-          events.map((event) => {
-            return <EventView
-              key={event._id}
-              event={event}
-              handleEditClick={this.props.handleEditClick}
-              handleDeleteClick={this.props.handleDeleteClick}
-            />;
-          })
+          events && events.length > 0 ?
+            events.map((event) => {
+              return <EventView
+                key={event._id}
+                event={event}
+                onEditClick={this.props.onEditClick}
+                onDeleteClick={this.props.onDeleteClick}
+              />;
+            })
+            :
+            <h4 className="m-4">No Events</h4>
         }
       </div>
     );
