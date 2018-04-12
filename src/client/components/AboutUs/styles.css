@@ -1,0 +1,106 @@
+/*! CSS Used from: https://my-pwa-8e1f1.firebaseapp.com/fb647f0466316826f4432ca0fab5b987.css */
+section{display:block;}
+@media print{
+*,:after,:before{background:transparent!important;color:#000!important;box-shadow:none!important;text-shadow:none!important;}
+h3,p{orphans:3;widows:3;}
+h3{page-break-after:avoid;}
+}
+*,:after,:before{box-sizing:border-box;}
+h3,h4,h5{font-family:inherit;font-weight:500;line-height:1.1;color:inherit;}
+h3{margin-top:20px;margin-bottom:10px;}
+h4,h5{margin-top:10px;margin-bottom:10px;}
+h3{font-size:24px;}
+h4{font-size:18px;}
+h5{font-size:14px;}
+p{margin:0 0 10px;}
+.container{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px;}
+@media (min-width:768px){
+.container{width:750px;}
+}
+@media (min-width:992px){
+.container{width:970px;}
+}
+@media (min-width:1200px){
+.container{width:1170px;}
+}
+.row{margin-left:-15px;margin-right:-15px;}
+.col-sm-5,.col-sm-7,.col-xs-12{position:relative;min-height:1px;padding-left:15px;padding-right:15px;}
+.col-xs-12{float:left;}
+.col-xs-12{width:100%;}
+@media (min-width:768px){
+.col-sm-5,.col-sm-7{float:left;}
+.col-sm-7{width:58.33333333%;}
+.col-sm-5{width:41.66666667%;}
+}
+.container:after,.container:before,.row:after,.row:before{content:" ";display:table;}
+.container:after,.row:after{clear:both;}
+/*! CSS Used from: https://my-pwa-8e1f1.firebaseapp.com/4a4452f7456200697b33155dcef36962.css */
+.icofont{font-family:IcoFont!important;speak:none;font-style:normal;font-weight:400;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+.icofont-hand-power:before{content:"\e913";}
+.icofont-star-shape:before{content:"\e929";}
+.icofont-users-alt-1:before{content:"\eddd";}
+/*! CSS Used from: https://my-pwa-8e1f1.firebaseapp.com/87a59f1aa45c65711e3f8e511fd23434.css */
+.animated{animation-duration:1s;animation-fill-mode:both;}
+.fadeInUp{animation-name:fadeInUp;}
+/*! CSS Used from: https://my-pwa-8e1f1.firebaseapp.com/89814887d6f9d9a80231e230f8b0a574.css */
+h3,h4,h5{font-weight:700;margin:0;}
+p{line-height:1.375;}
+.about-section{padding:147px 0 130px;position:relative;}
+.section-overlay{position:absolute;left:0;top:0;width:100%;height:100%;background:black;}
+.section-subtitle{font-size:30px;text-transform:uppercase;color:#444;font-weight:300;position:relative;display:inline-block;}
+.who-we-are .section-subtitle{color:#a9a9a9;}
+.title-area{position:relative;margin-left:140px;}
+.title-icon{font-size:27px;color:#fff;background:transparent;width:52px;height:52px;border-radius:50%;padding-top:10px;position:absolute;left:-81px;top:-7px;text-align:center;border:2px solid rgba(0,0,0,.1);transition:.4s;}
+.title-icon:hover{background:#fff;border-color:#fff!important;color:#000;}
+.title-icon:after{background:rgba(0,0,0,.1);content:"";height:141px;left:24px;position:absolute;top:-143px;width:2px;}
+.about-section .title-icon{border-color:hsla(0,0%,100%,.3);}
+.about-section .title-icon:after{background:hsla(0,0%,100%,.3);}
+.section-tittle{font-size:32px;color:var(--dark-color);line-height:.875;font-weight:700;text-transform:uppercase;margin-top:22px;margin-bottom:65px;}
+.about-section .section-tittle{color:#fff;margin-bottom:0;}
+.who-we-are p{color:#fff;padding-right:40px;margin-top:30px;padding-left:140px;}
+.company-mission{padding-left:138px;}
+.company-mission h5{font-weight:300;color:#a9a9a9;font-size:20px;display:inline-block;}
+.company-mission h4,.company-mission h5{text-transform:uppercase;position:relative;}
+.company-mission h4{color:#fff;font-size:26px;font-weight:700;line-height:1;margin-bottom:22px;margin-top:7px;}
+.company-mission p{color:#fff;}
+.our-company{margin-bottom:46px;}
+.our-company,.our-mission{position:relative;}
+::-webkit-input-placeholder{color:#fff;opacity:1;}
+:-moz-placeholder,::-moz-placeholder{color:#fff;opacity:1;}
+:-ms-input-placeholder{color:#fff;opacity:1;}
+/*! CSS Used from: https://my-pwa-8e1f1.firebaseapp.com/ac6eec1de2d638bcab660f4b50704ce8.css */
+@media screen and (max-width:1199px){
+.about-section{padding:90px 0 80px;}
+.title-icon:after{height:124px;top:-124px;}
+.title-area{margin-left:90px;}
+.section-tittle{font-size:26px;margin-top:20px;margin-bottom:30px;}
+.section-subtitle{font-size:24px;}
+.who-we-are p{padding-left:90px;padding-right:0;}
+.our-mission .title-icon:after{height:141px;top:-143px;}
+}
+@media screen and (max-width:991px){
+.section-tittle{font-size:22px;}
+.section-subtitle{font-size:20px;}
+.company-mission h4{font-size:22px;}
+.our-mission .title-icon:after{height:179px;top:-181px;}
+.company-mission{padding-left:135px;}
+}
+@media screen and (max-width:767px){
+.about-section{padding:70px 0 60px;}
+.title-area{margin-left:80px;}
+.section-subtitle{font-size:22px;}
+.section-tittle{font-size:22px;line-height:1;margin-bottom:30px;}
+.title-icon:after{height:124px;top:-124px;}
+.who-we-are p{padding-right:0;}
+.company-mission,.who-we-are p{margin-top:20px;padding-left:0;}
+.company-mission .title-icon{display:none;}
+.our-company{margin-bottom:30px;}
+}
+@media screen and (max-width:480px){
+.section-subtitle{font-size:20px;}
+.section-tittle{font-size:22px;}
+.company-mission h4{font-size:20px;}
+.company-mission h5{font-size:18px;}
+}
+/*! CSS Used keyframes */
+@keyframes fadeInUp{0%{opacity:0;transform:translate3d(0,20%,0);}to{opacity:1;transform:none;}}

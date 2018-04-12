@@ -52,6 +52,13 @@ export const UserViewList = Loadable({
   }
 });
 
+export const AboutUsView = Loadable({
+  loader: () => import("./AboutUs"),
+  loading() {
+    return (<Loader />);
+  }
+});
+
 export {default as SubmitButton} from "./SubmitButton";
 export { default as Loader } from "./Loader";
 export { default as PrivateRoute } from "./PrivateRoute";

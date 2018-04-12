@@ -1,5 +1,7 @@
 import * as React from "react";
+import { AboutUsView } from "../components";
 import AboutUsForm from "../forms/AboutUsForm";
+import { getFormValues } from "redux-form";
 import { connect } from "react-redux";
 import { getAboutUsThunk, postAboutUsThunk } from "../../store/aboutus";
 
@@ -41,10 +43,17 @@ class ManageAboutUs extends React.Component<any, any> {
 
   render() {
     return (
-      <div>
-        <AboutUsForm initialValues={this.state.initialValues} onSubmit={this.handleSubmit} />
-        {this.state.updated && <div>Updated</div>}
-        {this.state.error && <div>Something went wrong</div>}
+      <div className="flex flex-wrap">
+        <div className="w-1/2 mx-auto bg-black text-white">
+          <h2 className="text-center">Modify About Us Section</h2>
+          <AboutUsForm initialValues={this.state.initialValues} onSubmit={this.handleSubmit} />
+          {this.state.updated && <div>Updated</div>}
+          {this.state.error && <div>Something went wrong</div>}
+        </div>
+        {this.props.formValues && <div className="flex-1">
+          <h2 className="text-center">Live Preview</h2>
+          <p className="text-grey text-center">Actual view vary</p>
+          <AboutUsView data={this.props.formValues} /></div>}
       </div>
     );
   }
@@ -52,6 +61,7 @@ class ManageAboutUs extends React.Component<any, any> {
 
 const mapStateToProps = (state) => {
   return {
+    formValues: getFormValues("AboutUs")(state),
     aboutUsDetails: state.aboutUsData.aboutUsDetails
   };
 };

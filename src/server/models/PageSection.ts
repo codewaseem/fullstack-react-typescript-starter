@@ -1,4 +1,6 @@
 import mongoose from "./mongoose";
+import { buildDbSchemaFromConfig } from "./utils";
+import AboutUsSchema from "../../schemaConfigs/aboutUsSection";
 
 const PageSettingSchema = new mongoose.Schema({
   pageTitle: {
@@ -118,51 +120,7 @@ const PageSettingSchema = new mongoose.Schema({
 
 export const PageSetting = mongoose.model("PageSetting", PageSettingSchema);
 
-const AboutSectionSchema = new mongoose.Schema({
-  sectionOne: {
-    heading: {
-      type: String,
-      required: true
-    },
-    title: {
-      type: String,
-      required: true
-    },
-    description: {
-      type: String,
-      required: true
-    }
-  },
-  sectionTwo: {
-    heading: {
-      type: String,
-      required: true
-    },
-    title: {
-      type: String,
-      required: true
-    },
-    description: {
-      type: String,
-      required: true
-    }
-  },
-  sectionThree: {
-    heading: {
-      type: String,
-      required: true
-    },
-    title: {
-      type: String,
-      required: true
-    },
-    description: {
-      type: String,
-      required: true
-    }
-  }
-
-});
+const AboutSectionSchema = new mongoose.Schema(buildDbSchemaFromConfig(AboutUsSchema));
 
 export const AboutSection = mongoose.model("AboutSection", AboutSectionSchema);
 

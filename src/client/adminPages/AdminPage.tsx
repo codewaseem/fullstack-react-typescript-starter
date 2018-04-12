@@ -7,8 +7,6 @@ import {
   ManageUsersView
 } from "./";
 
-import { MyComponent } from "./NewTest";
-
 import { EnsureAdmin } from "./EnsureIsAdmin";
 
 const adminSections = {
@@ -55,7 +53,6 @@ class HomePage extends React.Component<any, any> {
     return (
       <div className="sm:p-4 h-full relative">
         <Switch>
-          <Route path={this.props.match.url + "/crud"} component={MyComponent} />
           {Object.keys(adminSections).map((key) => {
             return <Route key={key} path={this.props.match.url + key} component={adminSections[key].component} />;
           })}

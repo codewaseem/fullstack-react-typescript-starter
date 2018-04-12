@@ -41,12 +41,12 @@ export function generateReduxFormComponent(uniqueFormName: string, fieldObjects:
               Object.keys(fieldObjects).map((field) => {
                 return (
                   // tslint:disable-next-line:max-line-length
-                  <div key={field} className={`p-2 ${fieldObjects[field].component === "textarea" ? "w-full" : "w-1/2"}`}>
+                  <div key={field} className={`p-2 ${fieldObjects[field].component === "textarea" ? "w-full" : "w-full md:w-1/2"}`}>
                     <label className="block text-grey text-sm font-bold mb-2" htmlFor={field}>
                       {fieldObjects[field].label}
                     </label>
                     <Field
-                      className="focus:shadow-green appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                      className="focus:shadow-white appearance-none border rounded w-full py-2 px-3 text-grey-darker"
                       name={field}
                       component={fieldObjects[field].component}
                       type={fieldObjects[field].inputType}
