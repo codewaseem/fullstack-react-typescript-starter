@@ -5,11 +5,11 @@ const ArticleSchema: SchemeDBConfig = {
   imageLink: buildSchemaObject({ label: "Image Link" }),
   jobTitle: buildSchemaObject({ label: "Job Title" }),
   description: buildSchemaObject({ label: "Description" }),
-  facebookLink: buildSchemaObject({ label: "Facebook Link" }),
+  facebook: buildSchemaObject({ label: "Facebook Link" }),
   twitter: buildSchemaObject({ label: "Twitter Link" }),
   instagram: buildSchemaObject({ label: "Instagram Link" }),
   linkedIn: buildSchemaObject({ label: "LinkedIn Link" }),
-  googleLink: buildSchemaObject({ label: "Google Link" })
+  google: buildSchemaObject({ label: "Google Link" })
 };
 
 export default ArticleSchema;
