@@ -6,8 +6,11 @@ export default class LoginPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <LoginForm redirectTo="/admin-panel" />
+      <div className="h-full">
+        <div className="absolute abs-center">
+          <h2 className="text-center text-white p-2">Admin Login</h2>
+          <LoginForm redirectTo="/admin-panel" />
+        </div>
       </div>
     );
   }
