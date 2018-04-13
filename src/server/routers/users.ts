@@ -49,6 +49,26 @@ app.post("/update/", (req: express.Request, res: express.Response) => {
   updateModelAndSendResponse(User, req.body.id, req.body.details, res);
 });
 
+app.post("/setPassword", async (req: express.Request, res: express.Response) => {
+  try {
+    const user: any = await User.findById(req.body.id);
+    console.log("User ", user);
+    if (user) {
+      const updatedUser = await user.setPassword(req.body.newPassword);
+      console.log("updated user ", updatedUser);
+      if (updatedUser) {
+        sendJSONResponse(res, 200, true);
+      } else {
+        sendJSONResponse(res, 400, false);
+      }
+    } else {
+      sendJSONResponse(res, 400, false);
+    }
+  } catch (e) {
+    sendJSONResponse(res, 400, false, e);
+  }
+});
+
 app.post("/delete/", (req: express.Request, res: express.Response) => {
   removeModelByIdAndRespond(User, req.body.id, res);
 });
