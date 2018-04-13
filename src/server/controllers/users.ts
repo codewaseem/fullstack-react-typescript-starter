@@ -17,3 +17,21 @@ export const registerMember = async (req, res) => {
       }
     });
 };
+
+export const addMember = async (req, res) => {
+  (User as any).register(
+    new User(req.body.details),
+    req.body.details.password,
+    (err, user) => {
+      console.log("CHECK", err, user);
+      if (err) {
+        sendJSONResponse(res, 401, false, err);
+      } else {
+        // uncomment this when you want to implement sign up and verify the user after sign
+        // this is not needed when admin is registering the user.
+        // passport.authenticate("local")(req, res, () => {
+        sendJSONResponse(res, 200, true, user);
+        // });
+      }
+    });
+};

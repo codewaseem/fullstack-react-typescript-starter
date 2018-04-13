@@ -12,8 +12,8 @@ export default class UserViewList extends React.Component<any, any> {
             return <UserView
               key={user._id}
               user={user}
-              handleEditClick={this.props.handleEditClick}
-              handleDeleteClick={this.props.handleDeleteClick}
+              onEditClick={this.props.onEditClick}
+              onDeleteClick={this.props.onDeleteClick}
             />;
           })
           :

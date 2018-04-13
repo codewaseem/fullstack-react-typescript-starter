@@ -21,6 +21,7 @@ passport.deserializeUser((User as any).deserializeUser());
 
 export const jwtPassport = passport.use(new JwtStrategy(options, (jwtPayload, done) => {
   User.findOne({ _id: jwtPayload._id }, (err, user) => {
+    console.log(err, user);
     if (err) {
       return done(err, false);
     } else if (user) {

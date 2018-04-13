@@ -10,6 +10,10 @@ const UserSchema = new mongoose.Schema({
   roleLevel: {
     type: Number,
     default: 0
+  },
+  password: {
+    ...schema.password,
+    select: false
   }
 });
 

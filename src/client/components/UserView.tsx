@@ -3,7 +3,7 @@ import * as React from "react";
 export default class UserView extends React.Component<any, any> {
   render() {
     const { image_url, name, description, rsvp_link, _id: id, date, privateUser } = this.props.user;
-    const { handleEditClick, handleDeleteClick } = this.props;
+    const { onEditClick, onDeleteClick } = this.props;
     return (
       <div>
         <div><img src={image_url} /></div>
@@ -30,8 +30,8 @@ export default class UserView extends React.Component<any, any> {
           </div>
         </div>
         <div>
-          <span onClick={() => { handleEditClick(id); }}>Edit</span>
-          <span onClick={() => { handleDeleteClick(id); }}>Delete</span>
+          <span onClick={() => { onEditClick(id); }}>Edit</span>
+          <span onClick={() => { onDeleteClick(id); }}>Delete</span>
         </div>
       </div>
     );

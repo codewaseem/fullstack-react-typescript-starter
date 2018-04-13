@@ -3,13 +3,15 @@ import { getUsersThunk, updateUserThunk, deleteUserThunk, addUserThunk } from ".
 import { UserViewList } from "../components";
 import * as React from "react";
 import UserForm from "../forms/UserRegistrationForm";
+import UserUpdate from "../forms/UserUpdate";
+
 const MyComponent = crudViewMaker({
   // tslint:disable-next-line:max-line-length
   viewComponent: ({ itemList, ...props }) => <UserViewList users={itemList} {...props} />,
   extractListFromStore: (store) => store.usersData.usersList,
   extractMapFromStore: (store) => store.usersData.usersMap,
   addFormComponent: UserForm,
-  editFormComponent: UserForm,
+  editFormComponent: UserUpdate,
   crudThunks: {
     get: getUsersThunk,
     add: addUserThunk,
