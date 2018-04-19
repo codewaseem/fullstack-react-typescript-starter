@@ -40,7 +40,6 @@ app.get("/", cors(), async (req: express.Request, res: express.Response) => {
 });
 
 app.use(verifyUser);
-app.use(verifyAdmin);
 
 app.get("/allEvents", async (req: express.Request, res: express.Response) => {
   try {
