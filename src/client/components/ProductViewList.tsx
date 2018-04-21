@@ -19,7 +19,7 @@ export default class ProductViewList extends React.Component<any, any> {
               />;
             })
             :
-            <h4 className="mt-8">No Products Found</h4>
+            <h4 className="mt-8 text-white">No Products Found</h4>
           }
         </div>
       </div>

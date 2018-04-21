@@ -18,7 +18,7 @@ export default class GuestViewList extends React.Component<any, any> {
               />;
             })
             :
-            <h4 className="m-4">No Guests/Community Members</h4>
+            <h4 className="m-4 text-white">No Guests/Community Members</h4>
         }
       </div>
     );

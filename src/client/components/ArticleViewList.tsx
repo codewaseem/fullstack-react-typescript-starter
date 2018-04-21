@@ -17,7 +17,7 @@ export default class ArticleViewList extends React.Component<any, any> {
             />;
           })
           :
-          <h2 className="m-4">No articles</h2>
+          <h2 className="m-4 text-white">No articles</h2>
         }
       </div>
     );

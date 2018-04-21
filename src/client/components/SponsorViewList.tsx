@@ -8,7 +8,7 @@ export default class SponsorViewList extends React.Component<any, any> {
     return (
       <div>
         {
-          sponsors.map((sponsor) => {
+          sponsors ? sponsors.map((sponsor) => {
             return <SponsorView
               key={sponsor._id}
               sponsor={sponsor}
@@ -16,6 +16,8 @@ export default class SponsorViewList extends React.Component<any, any> {
               onDeleteClick={this.props.onDeleteClick}
             />;
           })
+          :
+          <h4 className="m-4 text-white">No Sponsors</h4>
         }
       </div>
     );

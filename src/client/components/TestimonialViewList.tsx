@@ -8,7 +8,7 @@ export default class TestimonialViewList extends React.Component<any, any> {
     return (
       <div>
         {
-          testimonials.map((testimonial) => {
+          testimonials ? testimonials.map((testimonial) => {
             return <TestimonialView
               key={testimonial._id}
               testimonial={testimonial}
@@ -16,6 +16,8 @@ export default class TestimonialViewList extends React.Component<any, any> {
               onDeleteClick={this.props.onDeleteClick}
             />;
           })
+          :
+          <h4 className="text-white m-4">No testimonials</h4>
         }
       </div>
     );

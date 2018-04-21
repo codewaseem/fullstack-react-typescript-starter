@@ -17,7 +17,7 @@ export default class UserViewList extends React.Component<any, any> {
             />;
           })
           :
-          <div>No users found</div>
+          <h4 className="text-white m-4">No users found</h4>
         }
       </div>
     );
