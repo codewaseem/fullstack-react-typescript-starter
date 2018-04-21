@@ -9,8 +9,10 @@ import { sponsorReducer } from "./sponsors";
 import { testimonialReducer } from "./testimonials";
 import { articleReducer } from "./articles";
 import { usersReducer } from "./users";
+import { settingsReducer } from "./pagesetting";
 
 export const rootReducer = combineReducers({
+  pageSettingsData: settingsReducer,
   auth: userReducer,
   productsData: productReducer,
   aboutUsData: aboutUsReducer,
@@ -20,5 +22,5 @@ export const rootReducer = combineReducers({
   testimonialsData: testimonialReducer,
   articlesData: articleReducer,
   usersData: usersReducer,
-  form: formReducer
+  form: formReducer,
 });

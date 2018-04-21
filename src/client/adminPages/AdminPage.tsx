@@ -4,12 +4,17 @@ import { Link, Route, Switch, withRouter } from "react-router-dom";
 import {
   ManageProductsView, ManageAboutUsView, ManageEventsView,
   ManageGuestsView, ManageSponsorsView, ManageTestimonialsView, ManageArticlesView,
-  ManageUsersView
+  ManageUsersView, ManagePageSettings
 } from "./";
 
 import { EnsureAdmin } from "./EnsureIsAdmin";
 
 const adminSections = {
+  "/manage_settings": {
+    component: ManagePageSettings,
+    name: "Page Settings",
+    description: "Change logo, contact image"
+  },
   "/manage_products": {
     component: ManageProductsView,
     name: "Products",

@@ -64,3 +64,10 @@ export const ManageUsersView = Loadable({
     return <Loader />;
   }
 });
+
+export const ManagePageSettings = Loadable({
+  loader: () => import("./ManagePageSettings"),
+  loading() {
+    return <Loader />;
+  }
+});

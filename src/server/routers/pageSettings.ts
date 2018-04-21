@@ -4,13 +4,13 @@ import {
   sendJSONResponse, setDetailsFor
 } from "../utils";
 import { PageSetting } from "../models";
-const app = express.Router();
 import cors from "cors";
+const app = express.Router();
 
 app.get("/", cors(), async (req: express.Request, res: express.Response) => {
   const sections = await PageSetting.find().exec();
   if (sections && sections.length >= 0) {
-    sendJSONResponse(res, 200, true, sections);
+    sendJSONResponse(res, 200, true, sections[0]);
   } else {
     sendJSONResponse(res, 404, false, "Something went wrong");
   }
@@ -19,7 +19,7 @@ app.get("/", cors(), async (req: express.Request, res: express.Response) => {
 app.use(verifyUser);
 app.use(verifyAdmin);
 
-app.post("/", async (req: express.Request, res: express.Response) => {
+app.post("/", (req: express.Request, res: express.Response) => {
   setDetailsFor(PageSetting, req.body.details, res);
 });
 
