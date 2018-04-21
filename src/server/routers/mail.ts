@@ -32,9 +32,13 @@ app.post("/contact", cors(), async (req: express.Request, res: express.Response)
   if (name && email && message) {
     const mailOptions = {
       from: "\"Dustin\" <ds@main.mediachemist.com>", // sender address
-      to: email, // list of receivers
-      subject: "Hello " + name, // Subject line
-      text: "Hello world?", // plain text body
+      to: "dustin@drivensociety.com", // list of receivers
+      subject: "DS Contact Form", // Subject line
+      text: `
+        Name : ${name}
+        Email : ${email}
+        Message : ${message}
+      `, // plain text body
     };
 
     // send mail with defined transport object
@@ -59,6 +63,28 @@ app.post("/newsletter", cors(), async (req: express.Request, res: express.Respon
   console.log(req.body.details);
   const { name, email } = req.body.details;
   if (name && email) {
+    const mailOptions = {
+      from: "\"Dustin\" <ds@main.mediachemist.com>", // sender address
+      to: "dustin@drivensociety.com", // list of receivers
+      subject: "DS Newsletter Signup", // Subject line
+      text: `
+        Name : ${name}
+        Email : ${email}
+      `, // plain text body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        return console.log(error);
+      }
+      console.log("Message sent: %s", info.messageId);
+      // Preview only available when sending through an Ethereal account
+      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+
+      // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+      // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+    });
     sendJSONResponse(res, 200, true, name);
   } else {
     sendJSONResponse(res, 400, false);
@@ -69,6 +95,29 @@ app.post("/advice", cors(), async (req: express.Request, res: express.Response) 
   console.log(req.body.details);
   const { name, email, message } = req.body.details;
   if (name && email && message) {
+    const mailOptions = {
+      from: "\"Dustin\" <ds@main.mediachemist.com>", // sender address
+      to: "dustin@drivensociety.com", // list of receivers
+      subject: "DS Member Advice", // Subject line
+      text: `
+        Name : ${name}
+        Email : ${email}
+        Message : ${message}
+      `, // plain text body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        return console.log(error);
+      }
+      console.log("Message sent: %s", info.messageId);
+      // Preview only available when sending through an Ethereal account
+      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+
+      // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+      // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+    });
     sendJSONResponse(res, 200, true, name);
   } else {
     sendJSONResponse(res, 400, false);
