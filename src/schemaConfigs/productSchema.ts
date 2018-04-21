@@ -7,4 +7,5 @@ export const ProductSchemaConfig: SchemeDBConfig = {
   btnText: buildSchemaObject({ label: "Button Text" }),
   order: buildSchemaObject({ label: "Display Order" }),
   description: buildSchemaObject({ label: "Description", component: "textarea" }),
+  title : buildSchemaObject({ label: "Title"})
 };
