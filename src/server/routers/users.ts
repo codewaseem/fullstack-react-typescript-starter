@@ -45,7 +45,14 @@ app.get("/", async (req: express.Request, res: express.Response) => {
 
 app.post("/add", addMember);
 
-app.post("/update/", (req: express.Request, res: express.Response) => {
+app.post("/update/", async (req: express.Request, res: express.Response) => {
+  if (req.body.details.password) {
+    console.log("Change password");
+    const user: any = await User.findById(req.body.details._id);
+    await user.setPassword(req.body.details.password);
+    await user.save();
+    delete req.body.details.password;
+  }
   updateModelAndSendResponse(User, req.body.id, req.body.details, res);
 });
 

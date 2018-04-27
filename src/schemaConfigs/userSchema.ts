@@ -15,3 +15,5 @@ export const UserFields: SchemeDBConfig = {
   address: buildSchemaObject({ label: "Address", component: "textarea", required: false }),
   personalInfo: buildSchemaObject({ label: "Personal Info/Interest", component: "textarea", required: false }),
 };
+
+export const editPasswordField = buildSchemaObject({ label: "Password", inputType: "password", required: false });
