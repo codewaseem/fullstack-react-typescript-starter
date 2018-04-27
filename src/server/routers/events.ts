@@ -16,7 +16,7 @@ app.get("/", cors(), async (req: express.Request, res: express.Response) => {
       if (event.privateEvent) {
         return {
           privateEvent: true,
-          date: (new Date()).toISOString(),
+          date: event.date,
           _id: event._id,
           // tslint:disable-next-line:max-line-length
           description: "This is private event. This is private event.This is private event.This is private event.This is private event.This is private event.",
