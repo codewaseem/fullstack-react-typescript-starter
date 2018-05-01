@@ -32,7 +32,7 @@ app.post("/contact", cors(), async (req: express.Request, res: express.Response)
   if (name && email && message) {
     const mailOptions = {
       from: "\"Dustin\" <ds@main.mediachemist.com>", // sender address
-      to: "alphawaseem@gmail.com", // list of receivers
+      to: "dustin@drivensociety.com", // list of receivers
       subject: "DS Contact Form", // Subject line
       text: `
         Name : ${name}
@@ -65,7 +65,7 @@ app.post("/newsletter", cors(), async (req: express.Request, res: express.Respon
   if (name && email) {
     const mailOptions = {
       from: "\"Dustin\" <ds@main.mediachemist.com>", // sender address
-      to: "alphawaseem@gmail.com", // list of receivers
+      to: "dustin@drivensociety.com", // list of receivers
       subject: "DS Newsletter Signup", // Subject line
       text: `
         Name : ${name}
@@ -97,7 +97,7 @@ app.post("/advice", cors(), async (req: express.Request, res: express.Response) 
   if (name && email && message) {
     const mailOptions = {
       from: "\"Dustin\" <ds@main.mediachemist.com>", // sender address
-      to: "alphawaseem@gmail.com", // list of receivers
+      to: "dustin@drivensociety.com", // list of receivers
       subject: "DS Member Advice", // Subject line
       text: `
         Name : ${name}
